@@ -6,4 +6,3 @@ data/*
 *.ipynb_checkpoints/
 venv/
 *.log
-*.json

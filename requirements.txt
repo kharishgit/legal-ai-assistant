@@ -6,3 +6,4 @@ chromadb==0.5.11
 requests==2.32.3
 beautifulsoup4==4.12.3
 python-dotenv==1.0.1
+playwright==1.48.0
