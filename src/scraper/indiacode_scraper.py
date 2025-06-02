@@ -93,8 +93,15 @@ def scrape_indiacode_pdf(pdf_url, output_dir="data/raw/indiacode"):
 
 # Test the scraper
 if __name__ == "__main__":
-    # pdf_url = "https://www.indiacode.nic.in/bitstream/123456789/1770/3/H1984-3.pdf#search=Indian%20Penal%20Code,%201860"
-    pdf_url = "https://www.indiacode.nic.in/bitstream/123456789/4219/1/ipc_1860.pdf"
+    pdf_url = "https://www.indiacode.nic.in/bitstream/123456789/1770/1/198403.pdf"
     result = scrape_indiacode_pdf(pdf_url)
     if result:
         print(json.dumps(result, indent=4))
+
+
+
+
+
+
+
+
