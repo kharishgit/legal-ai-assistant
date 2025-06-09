@@ -6,4 +6,4 @@ data/*
 *.ipynb_checkpoints/
 venv/
 *.log
-models/
+models/*
