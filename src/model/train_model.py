@@ -28,7 +28,8 @@ def prepare_qa_data(dataset_file="data/processed/combined_dataset.json"):
             logger.warning(f"Skipping entry: Invalid or empty context - {context[:50]}... (Source: {source})")
             continue
 
-        if source == "indiacode":
+        # Check for IPC 302 punishment in indiankanoon entries
+        if source == "indiankanoon" and "Section 302 in The Indian Penal Code" in context:
             question = "What is the punishment under IPC 302?"
             answer_text = "Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine."
             answer_start = context.find(answer_text)
@@ -39,27 +40,49 @@ def prepare_qa_data(dataset_file="data/processed/combined_dataset.json"):
                     "answers": {"text": [answer_text], "answer_start": [answer_start]}
                 }
                 qa_data.append(qa_entry)
-                logger.debug(f"Added India Code QA entry: {qa_entry}")
+                logger.debug(f"Added Indian Kanoon QA entry for IPC 302: {qa_entry}")
             else:
-                logger.warning(f"Skipping India Code entry: Answer not found in context - {context[:50]}... (Source: {source})")
-        else:  # Bar & Bench or Indian Kanoon
-            question = "What does this case say about IPC 302?"
+                logger.warning(f"Skipping Indian Kanoon entry: Answer not found in context - {context[:50]}... (Source: {source})")
+
+        # Handle case-related questions for both indiankanoon and barandbench
+        question = "What does this case say about IPC 302?"
+        if source == "indiankanoon" and "Section 302 in The Indian Penal Code" not in context:
+            # For case documents, look for sentences with "302" and extract relevant info
             sentences = [s.strip() for s in context.split(".") if "302" in s and s.strip()]
-            answer_text = sentences[0] if sentences else None
-            if answer_text and len(answer_text) > 0:
-                answer_start = context.find(answer_text)
-                if answer_start != -1:
-                    qa_entry = {
-                        "context": context,
-                        "question": question,
-                        "answers": {"text": [answer_text], "answer_start": [answer_start]}
-                    }
-                    qa_data.append(qa_entry)
-                    logger.debug(f"Added case QA entry: {qa_entry}")
-                else:
-                    logger.warning(f"Skipping case entry: Answer span not found in context - {context[:50]}... (Source: {source})")
+            answer_text = None
+            for sentence in sentences:
+                if "convicted" in sentence.lower() or "sentence" in sentence.lower():
+                    answer_text = sentence
+                    break
+            if not answer_text and sentences:
+                answer_text = sentences[0]
+        elif source == "barandbench":
+            # For Bar & Bench, look for the sentence with the ruling
+            sentences = [s.strip() for s in context.split(".") if "302" in s and s.strip()]
+            answer_text = None
+            for sentence in sentences:
+                if "contrary to Section 302" in sentence:
+                    answer_text = sentence
+                    break
+            if not answer_text and sentences:
+                answer_text = sentences[0]
+        else:
+            continue
+
+        if answer_text and len(answer_text) > 0:
+            answer_start = context.find(answer_text)
+            if answer_start != -1:
+                qa_entry = {
+                    "context": context,
+                    "question": question,
+                    "answers": {"text": [answer_text], "answer_start": [answer_start]}
+                }
+                qa_data.append(qa_entry)
+                logger.debug(f"Added case QA entry: {qa_entry}")
             else:
-                logger.warning(f"Skipping case entry: No relevant answer found in context - {context[:50]}... (Source: {source})")
+                logger.warning(f"Skipping case entry: Answer span not found in context - {context[:50]}... (Source: {source})")
+        else:
+            logger.warning(f"Skipping case entry: No relevant answer found in context - {context[:50]}... (Source: {source})")
 
     if not qa_data:
         logger.error("No valid QA examples prepared. Check the dataset for issues.")
