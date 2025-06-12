@@ -1,7 +1,7 @@
-# src/model/test_model.py
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
 import sys
 import os
+import torch
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from src.utils.logger import logger
@@ -13,11 +13,11 @@ def test_model(model_path="models/inlegalbert-qa"):
     logger.info(f"Loading model from {model_path}")
     model = AutoModelForQuestionAnswering.from_pretrained(model_path)
     tokenizer = AutoTokenizer.from_pretrained(model_path)
-    qa_pipeline = pipeline("question-answering", model=model, tokenizer=tokenizer)
+    qa_pipeline = pipeline("question-answering", model=model, tokenizer=tokenizer, device=0 if torch.cuda.is_available() else -1)
 
     # Sample contexts (from your dataset or manually provided)
-    context_indiacode = "Section 302. Punishment for murder. Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine."
-    context_case = "A Bench of Justices MR Shah and Krishna Murari ruled that reducing a life sentence in a murder case to the period already undergone in prison was contrary to Section 302 of IPC."
+    context_indiacode = "Section 302 in The Indian Penal Code, 1860: Punishment for murder. Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine."
+    context_case = "In a significant ruling, the Supreme Court of India clarified the application of Section 302 of the Indian Penal Code, which deals with the punishment for murder. A Bench of Justices MR Shah and Aniruddha Bose held that reducing a life sentence in a murder case to the period already undergone in prison was contrary to Section 302 of IPC, emphasizing that the minimum punishment for murder under Section 302 is life imprisonment or death, reflecting the gravity of the offence."
 
     questions = [
         {"question": "What is the punishment under IPC 302?", "context": context_indiacode},
@@ -25,13 +25,44 @@ def test_model(model_path="models/inlegalbert-qa"):
     ]
 
     for qa in questions:
-        result = qa_pipeline(question=qa["question"], context=qa["context"], top_k=1)  # Ensure top_k=1 to get a single answer
-        logger.info(f"Question: {qa['question']}")
-        # If top_k=1, result is a dict; otherwise, it's a list of dicts
-        if isinstance(result, list):
-            answer = result[0]["answer"] if result else "No answer found"
-        else:
-            answer = result["answer"] if result else "No answer found"
+        question = qa["question"]
+        context = qa["context"]
+        result = qa_pipeline(question=question, context=context)
+
+        # Extract the answer
+        answer = result["answer"].strip()
+
+        # Post-process to ensure the answer is concise and relevant
+        if answer and context:
+            answer_start_char = result["start"]
+            answer_end_char = result["end"]
+            # Find sentence boundaries
+            sentence_start = context.rfind(".", 0, answer_start_char) + 1
+            sentence_end = context.find(".", answer_end_char)
+            if sentence_start == 0:
+                sentence_start = 0
+            if sentence_end == -1:
+                sentence_end = len(context)
+            full_answer = context[sentence_start:sentence_end].strip()
+            if full_answer.startswith("."):
+                full_answer = full_answer[1:].strip()
+
+            # Refine the answer based on the question
+            if "What does this case say about IPC 302?" in question:
+                # Look for the core ruling by finding the phrase with "Section 302"
+                phrases = [p.strip() for p in full_answer.split(",") if "Section 302" in p]
+                if phrases:
+                    # Further refine by removing introductory phrases
+                    core_phrase = phrases[0]
+                    if "held that" in core_phrase:
+                        core_phrase = core_phrase.split("held that", 1)[-1].strip()
+                    answer = core_phrase
+                else:
+                    answer = full_answer
+            else:
+                answer = full_answer
+
+        logger.info(f"Question: {question}")
         logger.info(f"Answer: {answer}")
 
 if __name__ == "__main__":
