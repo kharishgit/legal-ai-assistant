@@ -1,4 +1,3 @@
-# src/scraper/news_scraper.py
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
@@ -37,7 +36,9 @@ def fetch_page_with_playwright(url, wait_selector=None, timeout=60000, retries=2
                 response = page.goto(url, wait_until="domcontentloaded", timeout=timeout)
                 logger.info(f"Navigated to URL: {page.url}")
 
-                page.wait_for_timeout(5000)  # Wait 5 seconds for JavaScript to render
+                page.wait_for_timeout(20000)  # Wait 20 seconds for JavaScript to render
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")  # Scroll to trigger dynamic content
+                page.wait_for_timeout(5000)  # Wait after scrolling
 
                 if wait_selector:
                     try:
@@ -45,7 +46,7 @@ def fetch_page_with_playwright(url, wait_selector=None, timeout=60000, retries=2
                         if elements:
                             logger.info(f"Found {len(elements)} elements matching selector {wait_selector}")
                             for i, element in enumerate(elements[:5]):
-                                href = element.get_attribute("href")
+                                href = element.get_attribute("href") if "href" in wait_selector else None
                                 logger.info(f"Element {i+1}: href={href}")
                         else:
                             logger.warning(f"No elements found for selector {wait_selector}")
@@ -71,26 +72,31 @@ def fetch_page_with_playwright(url, wait_selector=None, timeout=60000, retries=2
 
 def get_article_links(search_url, max_articles=10):
     """
-    Extract article URLs from a news search page.
+    Extract article URLs from a news search page (Legally India).
     Args:
         search_url (str): URL of the search page.
         max_articles (int): Maximum number of article links to extract.
     Returns:
         list: List of article URLs.
     """
-    soup = fetch_page_with_playwright(search_url, wait_selector="a[href*='/news/']")
+    # Use a general selector to ensure the page loads
+    soup = fetch_page_with_playwright(search_url, wait_selector="body")
     if not soup:
         return []
 
     article_links = []
     try:
-        links = soup.find_all("a", href=True)
-        for link in links:
-            href = link.get("href")
-            if href and "/news/" in href and href.startswith("https://www.barandbench.com/"):
-                article_links.append(href)
-                if len(article_links) >= max_articles:
-                    break
+        # Adjust selector based on Legally India's structure (to be confirmed with debug HTML)
+        # Assuming articles are in <h2> or <h3> tags with links
+        headers = soup.find_all(["h2", "h3"])
+        for header in headers:
+            link = header.find("a", href=True)
+            if link:
+                href = link.get("href")
+                if href and href.startswith("https://www.legallyindia.com/"):
+                    article_links.append(href)
+                    if len(article_links) >= max_articles:
+                        break
         article_links = list(dict.fromkeys(article_links))[:max_articles]
         logger.info(f"Extracted {len(article_links)} article links from {search_url}")
         return article_links
@@ -100,26 +106,31 @@ def get_article_links(search_url, max_articles=10):
 
 def scrape_article(url):
     """
-    Scrape a single news article page.
+    Scrape a single news article page (Legally India).
     Args:
         url (str): URL of the article page.
     Returns:
         dict: Scraped article data or None if failed.
     """
-    soup = fetch_page_with_playwright(url, wait_selector="h1")
+    soup = fetch_page_with_playwright(url, wait_selector="body")
     if not soup:
         logger.error(f"Failed to scrape article: {url}")
         return None
 
     try:
-        title = soup.find("h1")
-        title = title.text.strip() if title else "Unknown Title"
+        # Adjust selectors based on Legally India's structure (to be confirmed with debug HTML)
+        title_tag = soup.find("h1")
+        title = title_tag.text.strip() if title_tag else "Unknown Title"
 
-        date = soup.find("span", class_="date") or soup.find("div", class_="date")
-        date = date.text.strip() if date else "Unknown Date"
+        date_tag = soup.find("time") or soup.find("span", class_="date")
+        date = date_tag.text.strip() if date_tag else "Unknown Date"
 
-        content_div = soup.find("div", class_="article-content") or soup.find("div", class_="content")
-        content = content_div.text.strip() if content_div else "No content found"
+        content_div = soup.find("div", class_="content") or soup.find("article")
+        content = " ".join([p.text.strip() for p in content_div.find_all("p")]) if content_div else "No content found"
+
+        if content == "No content found":
+            logger.warning(f"No content found for article: {url}")
+            return None
 
         article_data = {
             "url": url,
@@ -132,7 +143,7 @@ def scrape_article(url):
         logger.error(f"Error parsing article {url}: {e}")
         return None
 
-def scrape_news_articles(search_url, max_articles=10, output_dir="data/raw/barandbench"):
+def scrape_news_articles(search_url, max_articles=10, output_dir="data/raw/legallyindia"):
     """
     Scrape multiple articles from a news search page.
     Args:
@@ -164,9 +175,9 @@ def scrape_news_articles(search_url, max_articles=10, output_dir="data/raw/baran
 
     return articles_data
 
-# Test the scraper with Bar & Bench
+# Test the scraper with Legally India
 if __name__ == "__main__":
-    search_url = "https://www.barandbench.com/search?q=IPC+302"
+    search_url = "https://www.legallyindia.com/search?q=IPC+302"
     articles = scrape_news_articles(search_url, max_articles=10)
     for article in articles:
         print(json.dumps(article, indent=4))
