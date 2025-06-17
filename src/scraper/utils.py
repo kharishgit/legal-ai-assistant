@@ -96,6 +96,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import os
+import re
 from playwright.sync_api import sync_playwright
 from src.utils.logger import logger
 
@@ -171,22 +172,28 @@ def get_case_links(search_url, max_cases=10):
     case_links = []
     try:
         results = soup.find_all("div", class_="result")
-        for result in results:
+        logger.info(f"Found {len(results)} result entries")
+        for idx, result in enumerate(results):
             link = result.find("a", href=True)
             if link:
                 href = link.get("href")
                 title = link.text.strip()
+                logger.info(f"Processing result {idx + 1}: Title={title}, Href={href}")
                 # Skip statutes (e.g., entries with "Section" or "Act" in the title)
                 if "Section" in title or "Act" in title:
                     logger.info(f"Skipping statute link: {title} ({href})")
                     continue
-                # Ensure the href is a valid case link
-                if href and "/doc/" in href and href.startswith("/doc/"):
-                    full_url = f"https://indiankanoon.org{href}"
+                # Handle both /doc/ and /docfragment/ patterns
+                doc_match = re.match(r"/docfragment/(\d+)/", href) or re.match(r"/doc/(\d+)/", href)
+                if doc_match:
+                    doc_id = doc_match.group(1)
+                    full_url = f"https://indiankanoon.org/doc/{doc_id}/"
                     case_links.append(full_url)
                     logger.info(f"Added case link: {full_url}")
-                    if len(case_links) >= max_cases:
-                        break
+                else:
+                    logger.warning(f"Link does not match case pattern: {href}")
+                if len(case_links) >= max_cases:
+                    break
         # Remove duplicates
         case_links = list(dict.fromkeys(case_links))[:max_cases]
         logger.info(f"Extracted {len(case_links)} case links from {search_url}")

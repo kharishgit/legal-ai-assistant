@@ -24,20 +24,26 @@ def fetch_page_with_playwright(url, wait_selector=None, timeout=60000, retries=2
             with sync_playwright() as p:
                 browser = p.chromium.launch(headless=True)
                 context = browser.new_context(
-                    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                     viewport={"width": 1280, "height": 720},
-                    accept_downloads=True
+                    accept_downloads=True,
+                    java_script_enabled=True,  # Explicitly enable JavaScript
+                    bypass_csp=True,  # Bypass Content Security Policy
+                    ignore_https_errors=True,  # Ignore HTTPS errors
                 )
                 page = context.new_page()
                 page.set_extra_http_headers({
                     "Accept-Language": "en-US,en;q=0.9",
-                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Connection": "keep-alive",
                 })
-                response = page.goto(url, wait_until="domcontentloaded", timeout=timeout)
+                response = page.goto(url, wait_until="networkidle", timeout=timeout)  # Wait until network is idle
                 logger.info(f"Navigated to URL: {page.url}")
 
-                page.wait_for_timeout(20000)  # Wait 20 seconds for JavaScript to render
-                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")  # Scroll to trigger dynamic content
+                # Simulate user interactions to trigger content loading
+                page.wait_for_timeout(20000)  # Wait 20 seconds for initial load
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")  # Scroll to bottom
                 page.wait_for_timeout(5000)  # Wait after scrolling
 
                 if wait_selector:
@@ -79,22 +85,22 @@ def get_article_links(search_url, max_articles=10):
     Returns:
         list: List of article URLs.
     """
-    # Use a general selector to ensure the page loads
     soup = fetch_page_with_playwright(search_url, wait_selector="body")
     if not soup:
         return []
 
     article_links = []
     try:
-        # Adjust selector based on Legally India's structure (to be confirmed with debug HTML)
-        # Assuming articles are in <h2> or <h3> tags with links
-        headers = soup.find_all(["h2", "h3"])
+        # Since we don't have the correct structure yet, try common selectors for articles
+        # We'll adjust this after getting the correct HTML
+        headers = soup.find_all(["h2", "h3", "h4"])
         for header in headers:
             link = header.find("a", href=True)
             if link:
                 href = link.get("href")
                 if href and href.startswith("https://www.legallyindia.com/"):
                     article_links.append(href)
+                    logger.info(f"Added article link: {href}")
                     if len(article_links) >= max_articles:
                         break
         article_links = list(dict.fromkeys(article_links))[:max_articles]
@@ -118,7 +124,6 @@ def scrape_article(url):
         return None
 
     try:
-        # Adjust selectors based on Legally India's structure (to be confirmed with debug HTML)
         title_tag = soup.find("h1")
         title = title_tag.text.strip() if title_tag else "Unknown Title"
 
