@@ -8,79 +8,7 @@ from bs4 import BeautifulSoup
 from src.utils.logger import logger
 from src.scraper.utils import fetch_page, get_case_links
 
-# def scrape_case(url):
-#     """
-#     Scrape a single case page from IndianKanoon.
-#     Args:
-#         url (str): URL of the case page.
-#     Returns:
-#         dict: Scraped case data or None if failed.
-#     """
-#     soup = fetch_page(url, use_playwright=True)
-#     if not soup:
-#         logger.error(f"Failed to scrape case: {url}")
-#         return None
 
-#     # Save the HTML of the case page for debugging
-#     with open(f"debug_case_{url.split('/')[-2]}.html", "w", encoding="utf-8") as f:
-#         f.write(str(soup))
-#     logger.info(f"Saved case HTML to debug_case_{url.split('/')[-2]}.html")
-
-#     try:
-#         # Extract title
-#         h2_tags = soup.find_all("h2")
-#         title = "Unknown Title"
-#         if len(h2_tags) >= 2:
-#             title = h2_tags[1].text.strip()  # Second h2 tag should be the case title
-#         logger.info(f"Extracted title: {title}")
-
-#         # Extract date from the title (e.g., "on 16 July, 1991")
-#         date = "Unknown Date"
-#         if title != "Unknown Title":
-#             date_match = re.search(r"on (\d{1,2} \w+, \d{4})", title)
-#             if date_match:
-#                 date = date_match.group(1)
-#         logger.info(f"Extracted date: {date}")
-
-#         # Extract content from div.judgment-body
-#         content_div = soup.find("div", class_="judgment-body")
-#         if content_div:
-#             paragraphs = content_div.find_all("p")
-#             logger.info(f"Found {len(paragraphs)} paragraphs in content div")
-#             content = " ".join([p.text.strip() for p in paragraphs if p.text.strip()])
-#         else:
-#             logger.warning("Content div not found, trying alternative selectors")
-#             # Fallback: Try div.judgement
-#             content_div = soup.find("div", class_="judgement")
-#             if content_div:
-#                 paragraphs = content_div.find_all("p")
-#                 logger.info(f"Found {len(paragraphs)} paragraphs in alternative content div")
-#                 content = " ".join([p.text.strip() for p in paragraphs if p.text.strip()])
-#             else:
-#                 # Fallback: Extract all paragraphs, but filter out advertisement text
-#                 paragraphs = soup.find_all("p")
-#                 logger.info(f"Found {len(paragraphs)} paragraphs in entire page")
-#                 content_parts = []
-#                 for p in paragraphs:
-#                     text = p.text.strip()
-#                     if text and "Take notes as you read a judgment" not in text and "Premium Member Services" not in text:
-#                         content_parts.append(text)
-#                 content = " ".join(content_parts)
-
-#         if not content or content == "":
-#             logger.warning(f"No content found for case: {url}")
-#             return None
-
-#         case_data = {
-#             "url": url,
-#             "title": title,
-#             "date": date,
-#             "content": content
-#         }
-#         return case_data
-#     except Exception as e:
-#         logger.error(f"Error parsing case {url}: {e}")
-#         return None
 def scrape_case(url):
     """
     Scrape a single case page from IndianKanoon.
