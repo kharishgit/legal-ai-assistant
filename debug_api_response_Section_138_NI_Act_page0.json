@@ -1,0 +1,532 @@
+{
+    "categories": [
+        [
+            "Filter by AI Tags",
+            [
+                {
+                    "value": "cheque-dishonour",
+                    "formInput": "Section%20138%20NI%20Act+tag:cheque-dishonour"
+                },
+                {
+                    "value": "negotiable-instruments",
+                    "formInput": "Section%20138%20NI%20Act+tag:negotiable-instruments"
+                },
+                {
+                    "value": "presumption-in-favour-of-cheque-holder, benefit-of-doubt-to-cheque-holder",
+                    "formInput": "Section%20138%20NI%20Act+tag:presumption-in-favour-of-cheque-holder, benefit-of-doubt-to-cheque-holder"
+                },
+                {
+                    "value": "examine-accused",
+                    "formInput": "Section%20138%20NI%20Act+tag:examine-accused"
+                },
+                {
+                    "value": "presumptions-for-negotiable-instruments",
+                    "formInput": "Section%20138%20NI%20Act+tag:presumptions-for-negotiable-instruments"
+                },
+                {
+                    "value": "offences-by-companies",
+                    "formInput": "Section%20138%20NI%20Act+tag:offences-by-companies"
+                },
+                {
+                    "value": "substance-of-accusation-to-be-stated",
+                    "formInput": "Section%20138%20NI%20Act+tag:substance-of-accusation-to-be-stated"
+                },
+                {
+                    "value": "criminal-procedure-code",
+                    "formInput": "Section%20138%20NI%20Act+tag:criminal-procedure-code"
+                },
+                {
+                    "value": "negotiable-instrument-drawn-for-consideration",
+                    "formInput": "Section%20138%20NI%20Act+tag:negotiable-instrument-drawn-for-consideration"
+                },
+                {
+                    "value": "cognizance-of-offences",
+                    "formInput": "Section%20138%20NI%20Act+tag:cognizance-of-offences"
+                }
+            ]
+        ],
+        [
+            "Related Queries",
+            [
+                {
+                    "value": "138 ni act",
+                    "formInput": "138%20ni%20act"
+                },
+                {
+                    "value": "section 138 ni act",
+                    "formInput": "section%20138%20ni%20act"
+                },
+                {
+                    "value": "138 NI Act: complainant died: legal heir on record: hearsay evidence",
+                    "formInput": "138%20NI%20Act%3A%20complainant%20died%3A%20legal%20heir%20on%20record%3A%20hearsay%20evidence"
+                },
+                {
+                    "value": "amount of cheque more than",
+                    "formInput": "amount%20of%20cheque%20more%20than"
+                },
+                {
+                    "value": "no debt liability",
+                    "formInput": "no%20debt%20liability"
+                },
+                {
+                    "value": "legally enforceable debts",
+                    "formInput": "legally%20enforceable%20debts"
+                },
+                {
+                    "value": "\"legally enforceable debt\"",
+                    "formInput": "%22legally%20enforceable%20debt%22"
+                },
+                {
+                    "value": "legally enforceable",
+                    "formInput": "legally%20enforceable"
+                },
+                {
+                    "value": "dishonour of cheque",
+                    "formInput": "dishonour%20of%20cheque"
+                },
+                {
+                    "value": "section 313 of crpc",
+                    "formInput": "section%20313%20of%20crpc"
+                }
+            ]
+        ],
+        [
+            "Document Types",
+            [
+                {
+                    "value": "All",
+                    "formInput": "Section%20138%20NI%20Act",
+                    "selected": true
+                },
+                {
+                    "value": "Laws",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:laws"
+                },
+                {
+                    "value": "Judgments",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:judgments"
+                },
+                {
+                    "value": "Tribunals",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:tribunals"
+                },
+                {
+                    "value": "Highcourts & Supremecourt",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:supremecourt,scorders,highcourts"
+                }
+            ]
+        ],
+        [
+            "Courts and Laws",
+            [
+                {
+                    "value": "Delhi District Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:delhidc",
+                    "selected": false
+                },
+                {
+                    "value": "Delhi High Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:delhi",
+                    "selected": false
+                },
+                {
+                    "value": "Bangalore District Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:bangaloredc",
+                    "selected": false
+                },
+                {
+                    "value": "Karnataka High Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:karnataka",
+                    "selected": false
+                },
+                {
+                    "value": "Bombay High Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:bombay",
+                    "selected": false
+                },
+                {
+                    "value": "Supreme Court of India",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:supremecourt",
+                    "selected": false
+                },
+                {
+                    "value": "Gujarat High Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:gujarat",
+                    "selected": false
+                },
+                {
+                    "value": "Punjab-Haryana High Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:punjab",
+                    "selected": false
+                },
+                {
+                    "value": "Allahabad High Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:allahabad",
+                    "selected": false
+                },
+                {
+                    "value": "Madras High Court",
+                    "formInput": "Section%20138%20NI%20Act+doctypes:chennai",
+                    "selected": false
+                }
+            ]
+        ],
+        [
+            "Authors",
+            [
+                {
+                    "value": "Amit B Borkar",
+                    "formInput": "Section%20138%20NI%20Act+authorid:a-b-borkar"
+                },
+                {
+                    "value": "S Muralidhar",
+                    "formInput": "Section%20138%20NI%20Act+authorid:s-muralidhar"
+                },
+                {
+                    "value": "Vipin Sanghi",
+                    "formInput": "Section%20138%20NI%20Act+authorid:v-sanghi"
+                },
+                {
+                    "value": "Jyoti Singh",
+                    "formInput": "Section%20138%20NI%20Act+authorid:jyoti-singh"
+                },
+                {
+                    "value": "Mukta Gupta",
+                    "formInput": "Section%20138%20NI%20Act+authorid:m-gupta"
+                }
+            ]
+        ],
+        [
+            "Bench",
+            [
+                {
+                    "value": "Amit B Borkar",
+                    "formInput": "Section%20138%20NI%20Act+benchid:a-b-borkar"
+                },
+                {
+                    "value": "S Muralidhar",
+                    "formInput": "Section%20138%20NI%20Act+benchid:s-muralidhar"
+                },
+                {
+                    "value": "Vipin Sanghi",
+                    "formInput": "Section%20138%20NI%20Act+benchid:v-sanghi"
+                },
+                {
+                    "value": "Jyoti Singh",
+                    "formInput": "Section%20138%20NI%20Act+benchid:jyoti-singh"
+                },
+                {
+                    "value": "Mukta Gupta",
+                    "formInput": "Section%20138%20NI%20Act+benchid:m-gupta"
+                },
+                {
+                    "value": "Ajjikuttira Somaiah Bopanna",
+                    "formInput": "Section%20138%20NI%20Act+benchid:a-s-bopanna"
+                },
+                {
+                    "value": "Rajendra Mal Lodha",
+                    "formInput": "Section%20138%20NI%20Act+benchid:r-m-lodha"
+                },
+                {
+                    "value": "Pradeep Nandrajog",
+                    "formInput": "Section%20138%20NI%20Act+benchid:p-nandrajog"
+                },
+                {
+                    "value": "Pratibha Rani",
+                    "formInput": "Section%20138%20NI%20Act+benchid:p-rani"
+                },
+                {
+                    "value": "Ved Prakash Vaish",
+                    "formInput": "Section%20138%20NI%20Act+benchid:v-p-vaish"
+                }
+            ]
+        ],
+        [
+            "Years",
+            [
+                {
+                    "value": "2024",
+                    "formInput": "Section%20138%20NI%20Act+year:2024"
+                },
+                {
+                    "value": "2023",
+                    "formInput": "Section%20138%20NI%20Act+year:2023"
+                },
+                {
+                    "value": "2022",
+                    "formInput": "Section%20138%20NI%20Act+year:2022"
+                },
+                {
+                    "value": "2025",
+                    "formInput": "Section%20138%20NI%20Act+year:2025"
+                },
+                {
+                    "value": "2021",
+                    "formInput": "Section%20138%20NI%20Act+year:2021"
+                },
+                {
+                    "value": "2019",
+                    "formInput": "Section%20138%20NI%20Act+year:2019"
+                },
+                {
+                    "value": "2015",
+                    "formInput": "Section%20138%20NI%20Act+year:2015"
+                },
+                {
+                    "value": "2018",
+                    "formInput": "Section%20138%20NI%20Act+year:2018"
+                },
+                {
+                    "value": "2020",
+                    "formInput": "Section%20138%20NI%20Act+year:2020"
+                },
+                {
+                    "value": "2017",
+                    "formInput": "Section%20138%20NI%20Act+year:2017"
+                }
+            ]
+        ]
+    ],
+    "docs": [
+        {
+            "tid": 100995424,
+            "catids": [
+                30,
+                286
+            ],
+            "doctype": 1000,
+            "publishdate": "2014-08-01",
+            "authorid": 730,
+            "bench": [
+                722,
+                730,
+                1439
+            ],
+            "title": "Dashrath Rupsingh Rathod vs State Of Maharashtra & Anr on 1 August, 2014",
+            "numcites": 66,
+            "numcitedby": 805,
+            "headline": "bank  within  the  postulation  of\n <b>Section</b> <b>138</b>  read with  <b>Sections</b> 3  and  72  of the <b>NI</b> <b>Act</b> was  the  drawee  bank\nor the collecting bank ... <b>Section</b> <b>138</b>   are  required  to  be  proved  to  successfully\nprosecute the drawer of  an  offence  under   <b>Section</b>  <b>138</b>   of  the  <b>NI</b>  <b>Act</b>”\n(emphasis supplied",
+            "docsize": 129363,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "V Sen",
+            "authorEncoded": "v-sen",
+            "citation": "AIR 2014 SUPREME COURT 3519"
+        },
+        {
+            "tid": 144941788,
+            "catids": [
+                30,
+                116
+            ],
+            "doctype": 1002,
+            "publishdate": "2015-05-14",
+            "authorid": 733,
+            "bench": [
+                733
+            ],
+            "title": "Suresh Chandra Goyal vs Amit Singhal on 14 May, 2015",
+            "numcites": 39,
+            "numcitedby": 712,
+            "headline": "funds. After issuance of the statutory\nnotice dated 04.08.2012 under  <b>Section</b> <b>138</b>  <b>NI</b> <b>Act</b>, since the accused did not\nmake payment, the complaint was preferred ... cheque. It cannot be said that a complaint under\n <b>Section</b> <b>138</b>  <b>NI</b> <b>Act</b> would not lie in respect of such a cheque, consequent\nupon",
+            "docsize": 83452,
+            "fragment": true,
+            "docsource": "Delhi High Court",
+            "author": "V Sanghi",
+            "authorEncoded": "v-sanghi"
+        },
+        {
+            "tid": 27480510,
+            "catids": [
+                30
+            ],
+            "doctype": 1002,
+            "publishdate": "2015-06-29",
+            "authorid": 733,
+            "bench": [
+                733
+            ],
+            "title": "Credential Leasing & Credits Ltd. vs Shruti Investments & Anr. on 29 June, 2015",
+            "numcites": 25,
+            "numcitedby": 618,
+            "headline": "prescribed statutory period.\nAccordingly, the complainant preferred the complaint under  <b>Section</b> <b>138</b>  <b>NI</b>\n<b>Act</b> through Sh. Dilip Kumar Agarwal, a Director duly authorised ... with the notice on 08.10.1998 under  <b>Section</b> 251  CrPC\nfor the offence punishable under  <b>Section</b> <b>138</b>  <b>NI</b> <b>Act</b>, to which the accused\npleaded not guilty",
+            "docsize": 78530,
+            "fragment": true,
+            "docsource": "Delhi High Court",
+            "author": "V Sanghi",
+            "authorEncoded": "v-sanghi"
+        },
+        {
+            "tid": 1327885,
+            "catids": [
+                30,
+                45,
+                42
+            ],
+            "doctype": 1000,
+            "publishdate": "2000-02-23",
+            "authorid": 2211,
+            "bench": [
+                2204,
+                2211
+            ],
+            "title": "Kusum Ingots And Alloys Ltd vs Pennar Peterson Securities Ltd. And Ors on 23 February, 2000",
+            "numcites": 15,
+            "numcitedby": 663,
+            "headline": "<b>NI</b> <b>Act</b>  in which the\naforementioned <b>sections</b> are included was inserted in the <b>Act</b> w.e.f.\n1.4.1989 by <b>Act</b> 66 of 1988. The object ... considered is whether <b>section</b> 22 A of SICA\naffects a criminal case for an offence under  <b>section</b> <b>138</b>  <b>NI</b> <b>Act</b>. In the\nsaid <b>section</b> provision",
+            "docsize": 30723,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "D P Mohapatra",
+            "authorEncoded": "d-p-mohapatra",
+            "citation": "AIR 2000 SUPREME COURT 954"
+        },
+        {
+            "tid": 176582397,
+            "catids": [
+                30,
+                286
+            ],
+            "doctype": 1000,
+            "publishdate": "2014-09-19",
+            "authorid": 1632,
+            "bench": [
+                1730,
+                1143,
+                1632
+            ],
+            "title": "Yogendra Pratap Singh vs Savitri Pandey & Anr on 19 September, 2014",
+            "numcites": 23,
+            "numcitedby": 241,
+            "headline": "<b>Section</b>  <b>138</b> .   The  Division\nBench took into consideration the provisions contained in   <b>Section</b>  <b>138</b>   and\n <b>Section</b> 142  of the <b>NI</b> <b>Act</b>  and  so  also   <b>Section</b> ... contained in clause (c) of the proviso to  <b>Section</b> <b>138</b>   and   <b>Section</b>  142   of\nthe <b>NI</b> <b>Act</b> and also considered  the  expression  “taking  cognizance",
+            "docsize": 56603,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "R M Lodha",
+            "authorEncoded": "r-m-lodha",
+            "citation": "AIR 2015 SUPREME COURT 157"
+        },
+        {
+            "tid": 78947881,
+            "catids": [
+                30,
+                377,
+                45
+            ],
+            "doctype": 1002,
+            "publishdate": "2009-05-22",
+            "authorid": 701,
+            "bench": [
+                701
+            ],
+            "title": "Hdfc Bank Limited vs Amit Kumar Singh on 22 May, 2009",
+            "numcites": 31,
+            "numcitedby": 140,
+            "headline": "would satisfy the\n\nrequirement even of  <b>Section</b> <b>138</b> (b)  read with  <b>Section</b> <b>138</b>(c)  <b>NI</b> <b>Act</b>.\n\nImportantly, the learned MM noted at the outset that ... <b>NI</b> <b>Act</b>  as a penal provision.  The <b>NI</b> <b>Act</b>  was otherwise not a criminal law\n\nstatute.  Chapter XVII <b>NI</b> <b>Act</b>  was introduced to make",
+            "docsize": 41335,
+            "fragment": true,
+            "docsource": "Delhi High Court",
+            "author": "S Muralidhar",
+            "authorEncoded": "s-muralidhar",
+            "citation": "AIR 2010 (NOC) 407 (DEL.)"
+        },
+        {
+            "tid": 171370472,
+            "catids": [
+                30,
+                379,
+                228,
+                424,
+                4
+            ],
+            "doctype": 1002,
+            "publishdate": "2017-10-17",
+            "authorid": 634,
+            "bench": [
+                634
+            ],
+            "title": "Dayawati vs Yogesh Kumar Gosain on 17 October, 2017",
+            "numcites": 79,
+            "numcitedby": 66,
+            "headline": "legal permissibility of referring a complaint cases under\n <b>Section</b> <b>138</b>  of the <b>NI</b> <b>Act</b> for amicable settlement through mediation;\nprocedure to be followed upon settlement ... <b>Section</b> <b>138</b>  of the\nNegotiable Instruments <b>Act</b> (&quot; <b>NI</b> <b>Act</b> &quot; hereafter) passed an order dated\n13th January, 2016, the following questions under  <b>Section</b>",
+            "docsize": 204276,
+            "fragment": true,
+            "docsource": "Delhi High Court",
+            "author": "A Malhotra",
+            "authorEncoded": "a-malhotra"
+        },
+        {
+            "tid": 1987479,
+            "catids": [
+                30
+            ],
+            "doctype": 1002,
+            "publishdate": "2011-09-09",
+            "authorid": 718,
+            "bench": [
+                718
+            ],
+            "title": "Ge Capital Transportation Financial ... vs Rahisuddin Khan on 9 September, 2011",
+            "numcites": 31,
+            "numcitedby": 107,
+            "headline": "notice at New Delhi.   A complaint case\n\nunder  <b>Section</b> <b>138</b>  <b>NI</b> <b>Act</b> had been filed at New Delhi.\n\n\n\n\n      Crl.Rev No.170/2010                       Page ... jurisdiction has held\n\nthat  <b>Section</b> <b>138</b>  <b>NI</b> <b>Act</b> contemplates following <b>acts</b>, which\n\nare component of offence under  <b>Section</b> <b>138</b>  <b>NI</b> <b>Act</b> :- \n\n\n        1)     drawing",
+            "docsize": 77236,
+            "fragment": true,
+            "docsource": "Delhi High Court",
+            "author": "S K Kait",
+            "authorEncoded": "s-k-kait"
+        },
+        {
+            "tid": 166729948,
+            "catids": [
+                30,
+                7,
+                116,
+                45
+            ],
+            "doctype": 1000,
+            "publishdate": "2021-10-08",
+            "authorid": 429,
+            "bench": [
+                991,
+                302,
+                429
+            ],
+            "title": "M/S Gimpex Private Limited vs Manoj Goel on 8 October, 2021",
+            "numcites": 29,
+            "numcitedby": 72,
+            "headline": "Madras High Court under  <b>Sections</b> 482  CrPC to\n\nquash the proceedings initiated under  <b>Section</b> <b>138</b>  of the <b>NI</b> <b>Act</b> in the second\n\ncomplaint. The latter ... instituted proceedings 14 under  <b>Section</b> 482  of the CrPC\n\nfor quashing the first complaint under  <b>Section</b> <b>138</b>  of the <b>NI</b> <b>Act</b>.\n\n\n14         By an order",
+            "docsize": 100758,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "D Y Chandrachud",
+            "authorEncoded": "d-y-chandrachud",
+            "citation": "AIRONLINE 2021 SC 865"
+        },
+        {
+            "tid": 69202113,
+            "catids": [
+                30,
+                116,
+                45
+            ],
+            "doctype": 1002,
+            "publishdate": "2014-04-23",
+            "authorid": 701,
+            "bench": [
+                701
+            ],
+            "title": "Icon Buildcon Pvt.Ltd. vs Aggarwal Developers Pvt. Ltd. & Ors. on 23 April, 2014",
+            "numcites": 7,
+            "numcitedby": 40,
+            "headline": "<b>Act</b> would still be attracted. By virtue of  <b>Section</b> <b>138</b> \nread with  <b>Section</b> 139  <b>NI</b> <b>Act</b>, the Court was required to presume that\nthe cheques ... would also be covered under  <b>Section</b> <b>138</b>  <b>NI</b> <b>Act</b>\nand that presumption under  <b>Section</b> 139  <b>NI</b> <b>Act</b> would be attracted even\nin such a case",
+            "docsize": 27996,
+            "fragment": true,
+            "docsource": "Delhi High Court",
+            "author": "S Muralidhar",
+            "authorEncoded": "s-muralidhar"
+        }
+    ],
+    "found": "1 - 10 of 27430",
+    "encodedformInput": "Section%20138%20NI%20Act"
+}

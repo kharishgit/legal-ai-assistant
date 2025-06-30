@@ -1,0 +1,557 @@
+{
+    "categories": [
+        [
+            "Filter by AI Tags",
+            [
+                {
+                    "value": "power-high-court-for-quashing",
+                    "formInput": "CrPC%20482+tag:power-high-court-for-quashing"
+                },
+                {
+                    "value": "criminal-procedure-code",
+                    "formInput": "CrPC%20482+tag:criminal-procedure-code"
+                },
+                {
+                    "value": "compounding-of-offences",
+                    "formInput": "CrPC%20482+tag:compounding-of-offences"
+                },
+                {
+                    "value": "theft",
+                    "formInput": "CrPC%20482+tag:theft"
+                },
+                {
+                    "value": "indian-penal-code",
+                    "formInput": "CrPC%20482+tag:indian-penal-code"
+                },
+                {
+                    "value": "attempt-to-murder",
+                    "formInput": "CrPC%20482+tag:attempt-to-murder"
+                },
+                {
+                    "value": "appeal-high-court < writ-petition-high-court",
+                    "formInput": "CrPC%20482+tag:appeal-high-court < writ-petition-high-court"
+                },
+                {
+                    "value": "common-intention",
+                    "formInput": "CrPC%20482+tag:common-intention"
+                },
+                {
+                    "value": "breach-of-trust",
+                    "formInput": "CrPC%20482+tag:breach-of-trust"
+                },
+                {
+                    "value": "cause-hurt",
+                    "formInput": "CrPC%20482+tag:cause-hurt"
+                }
+            ]
+        ],
+        [
+            "Related Queries",
+            [
+                {
+                    "value": "proceedings when can be quashed ",
+                    "formInput": "proceedings%20when%20can%20be%20quashed%20"
+                },
+                {
+                    "value": "quashing of criminal proceedings ",
+                    "formInput": "quashing%20of%20criminal%20proceedings%20"
+                },
+                {
+                    "value": "quashed the first information report",
+                    "formInput": "quashed%20the%20first%20information%20report"
+                },
+                {
+                    "value": "compounding of offence",
+                    "formInput": "compounding%20of%20offence"
+                },
+                {
+                    "value": "quashed under sec 482",
+                    "formInput": "quashed%20under%20sec%20482"
+                },
+                {
+                    "value": "indian penal code 1860",
+                    "formInput": "indian%20penal%20code%201860"
+                },
+                {
+                    "value": "bhajan lal",
+                    "formInput": "bhajan%20lal"
+                },
+                {
+                    "value": "compounding non compoundable offences",
+                    "formInput": "compounding%20non%20compoundable%20offences"
+                },
+                {
+                    "value": "section 420",
+                    "formInput": "section%20420"
+                },
+                {
+                    "value": "sec 307 of indian penal code",
+                    "formInput": "sec%20307%20of%20indian%20penal%20code"
+                }
+            ]
+        ],
+        [
+            "Document Types",
+            [
+                {
+                    "value": "All",
+                    "formInput": "CrPC%20482",
+                    "selected": true
+                },
+                {
+                    "value": "Laws",
+                    "formInput": "CrPC%20482+doctypes:laws"
+                },
+                {
+                    "value": "Judgments",
+                    "formInput": "CrPC%20482+doctypes:judgments"
+                },
+                {
+                    "value": "Tribunals",
+                    "formInput": "CrPC%20482+doctypes:tribunals"
+                },
+                {
+                    "value": "Highcourts & Supremecourt",
+                    "formInput": "CrPC%20482+doctypes:supremecourt,scorders,highcourts"
+                }
+            ]
+        ],
+        [
+            "Courts and Laws",
+            [
+                {
+                    "value": "Punjab-Haryana High Court",
+                    "formInput": "CrPC%20482+doctypes:punjab",
+                    "selected": false
+                },
+                {
+                    "value": "Allahabad High Court",
+                    "formInput": "CrPC%20482+doctypes:allahabad",
+                    "selected": false
+                },
+                {
+                    "value": "Karnataka High Court",
+                    "formInput": "CrPC%20482+doctypes:karnataka",
+                    "selected": false
+                },
+                {
+                    "value": "Madhya Pradesh High Court",
+                    "formInput": "CrPC%20482+doctypes:madhyapradesh",
+                    "selected": false
+                },
+                {
+                    "value": "Madras High Court",
+                    "formInput": "CrPC%20482+doctypes:chennai",
+                    "selected": false
+                },
+                {
+                    "value": "Supreme Court of India",
+                    "formInput": "CrPC%20482+doctypes:supremecourt",
+                    "selected": false
+                },
+                {
+                    "value": "Delhi High Court",
+                    "formInput": "CrPC%20482+doctypes:delhi",
+                    "selected": false
+                },
+                {
+                    "value": "Himachal Pradesh High Court",
+                    "formInput": "CrPC%20482+doctypes:himachal_pradesh",
+                    "selected": false
+                },
+                {
+                    "value": "Gujarat High Court",
+                    "formInput": "CrPC%20482+doctypes:gujarat",
+                    "selected": false
+                },
+                {
+                    "value": "Rajasthan High Court - Jaipur",
+                    "formInput": "CrPC%20482+doctypes:jaipur",
+                    "selected": false
+                }
+            ]
+        ],
+        [
+            "Authors",
+            [
+                {
+                    "value": "Anoop Chitkara",
+                    "formInput": "CrPC%20482+authorid:a-chitkara"
+                },
+                {
+                    "value": "Maheshan Nagaprasanna",
+                    "formInput": "CrPC%20482+authorid:m-nagaprasanna"
+                },
+                {
+                    "value": "Gurpal Singh Ahluwalia",
+                    "formInput": "CrPC%20482+authorid:g-s-ahluwalia"
+                },
+                {
+                    "value": "Sandeep Sharma",
+                    "formInput": "CrPC%20482+authorid:s-sharma"
+                },
+                {
+                    "value": "Manju Rani Chauhan",
+                    "formInput": "CrPC%20482+authorid:m-r-chauhan"
+                }
+            ]
+        ],
+        [
+            "Bench",
+            [
+                {
+                    "value": "Anoop Chitkara",
+                    "formInput": "CrPC%20482+benchid:a-chitkara"
+                },
+                {
+                    "value": "Maheshan Nagaprasanna",
+                    "formInput": "CrPC%20482+benchid:m-nagaprasanna"
+                },
+                {
+                    "value": "Gurpal Singh Ahluwalia",
+                    "formInput": "CrPC%20482+benchid:g-s-ahluwalia"
+                },
+                {
+                    "value": "Manju Rani Chauhan",
+                    "formInput": "CrPC%20482+benchid:m-r-chauhan"
+                },
+                {
+                    "value": "Sandeep Sharma",
+                    "formInput": "CrPC%20482+benchid:s-sharma"
+                },
+                {
+                    "value": "Samit Gopal",
+                    "formInput": "CrPC%20482+benchid:s-gopal"
+                },
+                {
+                    "value": "Mukeshkumar Rasikbhai Shah",
+                    "formInput": "CrPC%20482+benchid:m-r-shah"
+                },
+                {
+                    "value": "Vikas Bahl",
+                    "formInput": "CrPC%20482+benchid:v-bahl"
+                },
+                {
+                    "value": "Sudhir Agarwal",
+                    "formInput": "CrPC%20482+benchid:s-agarwal"
+                },
+                {
+                    "value": "Ashok Kumar Gaur",
+                    "formInput": "CrPC%20482+benchid:a-k-gaur"
+                }
+            ]
+        ],
+        [
+            "Years",
+            [
+                {
+                    "value": "2023",
+                    "formInput": "CrPC%20482+year:2023"
+                },
+                {
+                    "value": "2022",
+                    "formInput": "CrPC%20482+year:2022"
+                },
+                {
+                    "value": "2024",
+                    "formInput": "CrPC%20482+year:2024"
+                },
+                {
+                    "value": "2021",
+                    "formInput": "CrPC%20482+year:2021"
+                },
+                {
+                    "value": "2020",
+                    "formInput": "CrPC%20482+year:2020"
+                },
+                {
+                    "value": "2018",
+                    "formInput": "CrPC%20482+year:2018"
+                },
+                {
+                    "value": "2025",
+                    "formInput": "CrPC%20482+year:2025"
+                },
+                {
+                    "value": "2019",
+                    "formInput": "CrPC%20482+year:2019"
+                },
+                {
+                    "value": "2017",
+                    "formInput": "CrPC%20482+year:2017"
+                },
+                {
+                    "value": "2010",
+                    "formInput": "CrPC%20482+year:2010"
+                }
+            ]
+        ]
+    ],
+    "docs": [
+        {
+            "tid": 1679850,
+            "catids": null,
+            "doctype": 11,
+            "publishdate": "1974-01-25",
+            "authorid": null,
+            "bench": null,
+            "title": "Section <b>482</b> in The <b>Code</b> of <b>Criminal</b> <b>Procedure</b>, 1973",
+            "numcites": 0,
+            "numcitedby": 644872,
+            "headline": "Section <b>482</b> in The <b>Code</b> of <b>Criminal</b> <b>Procedure</b>, 1973 \n\n  <b>482</b>. Saving of inherent powers of High Court. \n  - Nothing in this <b>Code</b> shall be deemed",
+            "docsize": 523,
+            "fragment": false,
+            "covers": [
+                {
+                    "tid": 445276,
+                    "title": "Entire Act"
+                }
+            ],
+            "docsource": "Union of India - Section"
+        },
+        {
+            "tid": 69949024,
+            "catids": [
+                7,
+                10,
+                228,
+                23,
+                0
+            ],
+            "doctype": 1000,
+            "publishdate": "2012-09-24",
+            "authorid": 1632,
+            "bench": [
+                1632,
+                797,
+                963
+            ],
+            "title": "Gian Singh vs State Of Punjab & Anr on 24 September, 2012",
+            "numcites": 81,
+            "numcitedby": 53834,
+            "headline": "LEAVE PETITION (<b>CRL</b>.) NO. 5921 OF 2009\n\n               SPECIAL LEAVE PETITION (<b>CRL</b>.) NO. 7148 OF 2009\n\n               SPECIAL LEAVE PETITION (<b>CRL</b>.) NO. 6324 OF 2009\n\n                   <b>CRIMINAL</b> APPEAL ... consideration  before\nus.\n  3.          Two provisions of the  <b>Code</b>  of  <b>Criminal</b>  <b>Procedure</b> ,  1973  (for\nshort, ‘<b>Code</b>’) which are vital for consideration of the  issue  referred",
+            "docsize": 131932,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "R M Lodha",
+            "authorEncoded": "r-m-lodha",
+            "citation": "2012 AIR SCW 5333"
+        },
+        {
+            "tid": 811682,
+            "catids": [
+                7,
+                20,
+                1,
+                228,
+                4
+            ],
+            "doctype": 1024,
+            "publishdate": "2007-08-08",
+            "authorid": null,
+            "bench": [
+                1600,
+                1604,
+                1612,
+                1593
+            ],
+            "title": "Kulwinder Singh And Ors. vs State Of Punjab And Anr. on 8 August, 2007",
+            "numcites": 47,
+            "numcitedby": 17444,
+            "headline": "High Court under its inherent power under  Section <b>482</b>  of the <b>Code</b> of <b>Criminal</b> <b>Procedure</b>. The practice of filing miscellaneous petitions after the disposal ... <b>Criminal</b> <b>Procedure</b> <b>Code</b> starts with the words &quot;Nothing in this <b>Code</b>&quot;. Thus the inherent jurisdiction of the High Court under Sectin <b>482</b>",
+            "docsize": 60666,
+            "fragment": true,
+            "docsource": "Punjab-Haryana High Court",
+            "citation": "2007(4)CTC769"
+        },
+        {
+            "tid": 149247382,
+            "catids": [
+                11,
+                7,
+                2,
+                228,
+                58
+            ],
+            "doctype": 1000,
+            "publishdate": "2019-03-05",
+            "authorid": 835,
+            "bench": [
+                835,
+                971,
+                1575
+            ],
+            "title": "The State Of Madhya Pradesh vs Laxmi Narayan on 5 March, 2019",
+            "numcites": 25,
+            "numcitedby": 4366,
+            "headline": "Accused’), and in exercise of its powers under\n\n Section <b>482</b>  of the <b>Code</b> of <b>Criminal</b> <b>Procedure</b>, has quashed the\n\nproceedings against the accused ... memos.\n \n \n\n3.4 That the accused filed Miscellaneous <b>Criminal</b> Case No. 8000 of\n\n2013 under  Section <b>482</b>  of Cr.P.C. before the High Court",
+            "docsize": 59262,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "M R Shah",
+            "authorEncoded": "m-r-shah",
+            "citation": "AIR 2019 SUPREME COURT 1296"
+        },
+        {
+            "tid": 172610348,
+            "catids": [
+                7,
+                20,
+                4,
+                58,
+                1
+            ],
+            "doctype": 1000,
+            "publishdate": "2018-03-28",
+            "authorid": 1571,
+            "bench": [
+                1571,
+                1730
+            ],
+            "title": "Asian Resurfacing Of Road Agency P. Ltd. vs Central Bureau Of Investigation on 28 March, 2018",
+            "numcites": 64,
+            "numcitedby": 2158,
+            "headline": "<b>Criminal</b>\n<b>Procedure</b> . The inherent powers of the High\nCourt have not been limited by any other\nprovisions contained in the  <b>Code</b> of <b>Criminal</b>\n<b>Procedure</b> ... words ?Nothing in this <b>Code</b>? in  Section <b>482</b>  of\nthe <b>Code</b> of <b>Criminal</b> <b>Procedure</b>, but, the\npowers under  Section <b>482</b>  of the <b>Code</b> of\n<b>Criminal</b>",
+            "docsize": 129829,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "A K Goel",
+            "authorEncoded": "adarsh-kumar-goel",
+            "citation": "AIR 2018 SUPREME COURT 2039"
+        },
+        {
+            "tid": 199473647,
+            "catids": [
+                7,
+                1,
+                4,
+                13
+            ],
+            "doctype": 1000,
+            "publishdate": "2021-04-13",
+            "authorid": 835,
+            "bench": [
+                709,
+                835,
+                429
+            ],
+            "title": "M/S Neeharika, Infrastructure Pvt. ... vs The State Of Maharashtra on 13 April, 2021",
+            "numcites": 75,
+            "numcitedby": 3990,
+            "headline": "<b>criminal</b> proceedings.         It is\n\nsubmitted that the grounds on which the <b>criminal</b> proceedings can be\n\nquashed in exercise of powers under  Section <b>482</b>   ... under Section 561-A of the\n\nearlier <b>Code</b> (which is pari materia with  Section <b>482</b>  of the <b>Code</b>), it is\n\nobserved and held that",
+            "docsize": 147920,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "M R Shah",
+            "authorEncoded": "m-r-shah",
+            "citation": "AIR 2021 SUPREME COURT 1918"
+        },
+        {
+            "tid": 1157676,
+            "catids": [
+                7,
+                1,
+                228,
+                40,
+                10
+            ],
+            "doctype": 1000,
+            "publishdate": "2008-10-16",
+            "authorid": 1908,
+            "bench": [
+                1908,
+                1900
+            ],
+            "title": "Manoj Sharma vs State & Ors on 16 October, 2008",
+            "numcites": 37,
+            "numcitedby": 2753,
+            "headline": "<b>IPC</b> can be\n\n      quashed either under  Section <b>482</b>  of the <b>Code</b> of\n\n      <b>Criminal</b> <b>Procedure</b> or under  Article 226  of the\n\n      Constitution,     when   the      accused ... <b>482</b>  of the <b>Code</b> to quash\n\n<b>Criminal</b> proceedings or FIR or complaint were\n \f                                                                   4 \n\n\n     not circumscribed by  Section 320  of the <b>Code</b> of\n\n     <b>Criminal</b> <b>Procedure</b>",
+            "docsize": 35372,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "A Kabir",
+            "authorEncoded": "a-kabir"
+        },
+        {
+            "tid": 891864,
+            "catids": [
+                7,
+                10,
+                4,
+                22,
+                12
+            ],
+            "doctype": 1000,
+            "publishdate": "2001-10-18",
+            "authorid": null,
+            "bench": [
+                2211,
+                2217
+            ],
+            "title": "S.W. Palanitkar And Ors vs State Of Bihar And Anr on 18 October, 2001",
+            "numcites": 24,
+            "numcitedby": 2481,
+            "headline": "appellants approached the High\nCourt by filing a petition under  Section <b>482</b>  Cr.P.C. for quashing the\naforemen-tioned order of the learned Magistrate ... offence under\n Section 420  <b>IPC</b> only.\n \n   The High Court dismissed the petition filed under  Section <b>482</b>  Cr.P.C. by\nthe impugned order placing reliance",
+            "docsize": 30972,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "citation": "AIR 2001 SUPREME COURT 2960"
+        },
+        {
+            "tid": 1282121,
+            "catids": [
+                7,
+                228,
+                22,
+                1,
+                40
+            ],
+            "doctype": 1000,
+            "publishdate": "2011-11-14",
+            "authorid": 722,
+            "bench": [
+                722,
+                1682
+            ],
+            "title": "Shiji @ Pappu & Ors vs Radhika & Anr on 14 November, 2011",
+            "numcites": 30,
+            "numcitedby": 3214,
+            "headline": "Ernakulam, whereby <b>Criminal</b> M.C. no. 3715 \n\n\nof   2010   filed   under   Section   <b>482</b>   of   the   <b>Code</b>   of   <b>Criminal</b>  \n\n\n                                          1 \n\n\f\n<b>Procedure</b>,   1973,   with   a   prayer ... appellate court while dealing with a petition under  Section <b>482</b>  \n\n\nof the <b>Criminal</b> <b>Procedure</b> <b>Code</b>.  Subject to the above, the High \n\n\nCourt will have",
+            "docsize": 35809,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "T S Thakur",
+            "authorEncoded": "t-s-thakur",
+            "citation": "AIR 2012 SUPREME COURT 499"
+        },
+        {
+            "tid": 855018,
+            "catids": [
+                7,
+                28,
+                10,
+                12
+            ],
+            "doctype": 1000,
+            "publishdate": "2007-10-09",
+            "authorid": 1920,
+            "bench": [
+                1935,
+                1893,
+                1920
+            ],
+            "title": "Inder Mohan Goswami & Another vs State Of Uttaranchal & Others on 9 October, 2007",
+            "numcites": 23,
+            "numcitedby": 1931,
+            "headline": "July, 2004 passed in <b>Criminal</b> Miscellaneous Application \nNo.248 of 2003 under  section <b>482</b>  of the <b>Code</b> of <b>Criminal</b> \n<b>Procedure</b> (for short   ... civil court. The \nappellants contended that they filed a <b>criminal</b> miscellaneous \napplication under  section <b>482</b>  Cr.P.C. for quashing the FIR \nbecause no offence",
+            "docsize": 50158,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "D Bhandari",
+            "authorEncoded": "d-bhandari",
+            "citation": "AIR 2008 SUPREME COURT 251"
+        }
+    ],
+    "found": "1 - 10 of 95031",
+    "encodedformInput": "CrPC%20482"
+}

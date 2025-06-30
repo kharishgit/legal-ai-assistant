@@ -1,0 +1,560 @@
+{
+    "categories": [
+        [
+            "Filter by AI Tags",
+            [
+                {
+                    "value": "murder",
+                    "formInput": "IPC%20302+tag:murder"
+                },
+                {
+                    "value": "indian-penal-code",
+                    "formInput": "IPC%20302+tag:indian-penal-code"
+                },
+                {
+                    "value": "common-intention",
+                    "formInput": "IPC%20302+tag:common-intention"
+                },
+                {
+                    "value": "unlawful-assembly",
+                    "formInput": "IPC%20302+tag:unlawful-assembly"
+                },
+                {
+                    "value": "rioting",
+                    "formInput": "IPC%20302+tag:rioting"
+                },
+                {
+                    "value": "definition-murder",
+                    "formInput": "IPC%20302+tag:definition-murder"
+                },
+                {
+                    "value": "culpable-homicide",
+                    "formInput": "IPC%20302+tag:culpable-homicide"
+                },
+                {
+                    "value": "attempt-to-murder",
+                    "formInput": "IPC%20302+tag:attempt-to-murder"
+                },
+                {
+                    "value": "dowry-death",
+                    "formInput": "IPC%20302+tag:dowry-death"
+                },
+                {
+                    "value": "dowry",
+                    "formInput": "IPC%20302+tag:dowry"
+                }
+            ]
+        ],
+        [
+            "Related Queries",
+            [
+                {
+                    "value": "section 302 ipc",
+                    "formInput": "section%20302%20ipc"
+                },
+                {
+                    "value": "section 302 indian penal code",
+                    "formInput": "section%20302%20indian%20penal%20code"
+                },
+                {
+                    "value": "section 304 ipc",
+                    "formInput": "section%20304%20ipc"
+                },
+                {
+                    "value": "sec.34 ipc",
+                    "formInput": "sec.34%20ipc"
+                },
+                {
+                    "value": "sec 149 ipc",
+                    "formInput": "sec%20149%20ipc"
+                },
+                {
+                    "value": "section 304 indian penal code",
+                    "formInput": "section%20304%20indian%20penal%20code"
+                },
+                {
+                    "value": "section 149 of indian penal code",
+                    "formInput": "section%20149%20of%20indian%20penal%20code"
+                },
+                {
+                    "value": "section 300 of ipc",
+                    "formInput": "section%20300%20of%20ipc"
+                },
+                {
+                    "value": "-culpable homicide",
+                    "formInput": "-culpable%20homicide"
+                },
+                {
+                    "value": "no common intention",
+                    "formInput": "no%20common%20intention"
+                }
+            ]
+        ],
+        [
+            "Document Types",
+            [
+                {
+                    "value": "All",
+                    "formInput": "IPC%20302",
+                    "selected": true
+                },
+                {
+                    "value": "Laws",
+                    "formInput": "IPC%20302+doctypes:laws"
+                },
+                {
+                    "value": "Judgments",
+                    "formInput": "IPC%20302+doctypes:judgments"
+                },
+                {
+                    "value": "Tribunals",
+                    "formInput": "IPC%20302+doctypes:tribunals"
+                },
+                {
+                    "value": "Highcourts & Supremecourt",
+                    "formInput": "IPC%20302+doctypes:supremecourt,scorders,highcourts"
+                }
+            ]
+        ],
+        [
+            "Courts and Laws",
+            [
+                {
+                    "value": "Allahabad High Court",
+                    "formInput": "IPC%20302+doctypes:allahabad",
+                    "selected": false
+                },
+                {
+                    "value": "Madras High Court",
+                    "formInput": "IPC%20302+doctypes:chennai",
+                    "selected": false
+                },
+                {
+                    "value": "Supreme Court of India",
+                    "formInput": "IPC%20302+doctypes:supremecourt",
+                    "selected": false
+                },
+                {
+                    "value": "Madhya Pradesh High Court",
+                    "formInput": "IPC%20302+doctypes:madhyapradesh",
+                    "selected": false
+                },
+                {
+                    "value": "Delhi High Court",
+                    "formInput": "IPC%20302+doctypes:delhi",
+                    "selected": false
+                },
+                {
+                    "value": "Rajasthan High Court - Jaipur",
+                    "formInput": "IPC%20302+doctypes:jaipur",
+                    "selected": false
+                },
+                {
+                    "value": "Karnataka High Court",
+                    "formInput": "IPC%20302+doctypes:karnataka",
+                    "selected": false
+                },
+                {
+                    "value": "Rajasthan High Court - Jodhpur",
+                    "formInput": "IPC%20302+doctypes:jodhpur",
+                    "selected": false
+                },
+                {
+                    "value": "Punjab-Haryana High Court",
+                    "formInput": "IPC%20302+doctypes:punjab",
+                    "selected": false
+                },
+                {
+                    "value": "Kerala High Court",
+                    "formInput": "IPC%20302+doctypes:kerala",
+                    "selected": false
+                }
+            ]
+        ],
+        [
+            "Authors",
+            [
+                {
+                    "value": "Rajeev Kumar Shrivastava",
+                    "formInput": "IPC%20302+authorid:r-k-shrivastava"
+                },
+                {
+                    "value": "B Veerappa",
+                    "formInput": "IPC%20302+authorid:b-veerappa"
+                },
+                {
+                    "value": "Gopal Krishan Vyas",
+                    "formInput": "IPC%20302+authorid:g-k-vyas"
+                },
+                {
+                    "value": "Surinder Singh Saron",
+                    "formInput": "IPC%20302+authorid:s-s-saron"
+                },
+                {
+                    "value": "Aditya Kumar Trivedi",
+                    "formInput": "IPC%20302+authorid:a-k-trivedi"
+                }
+            ]
+        ],
+        [
+            "Bench",
+            [
+                {
+                    "value": "Rajeev Kumar Shrivastava",
+                    "formInput": "IPC%20302+benchid:r-k-shrivastava"
+                },
+                {
+                    "value": "Gurpal Singh Ahluwalia",
+                    "formInput": "IPC%20302+benchid:g-s-ahluwalia"
+                },
+                {
+                    "value": "Gopal Krishan Vyas",
+                    "formInput": "IPC%20302+benchid:g-k-vyas"
+                },
+                {
+                    "value": "B Veerappa",
+                    "formInput": "IPC%20302+benchid:b-veerappa"
+                },
+                {
+                    "value": "Ramesh Sinha",
+                    "formInput": "IPC%20302+benchid:r-sinha"
+                },
+                {
+                    "value": "Surinder Singh Saron",
+                    "formInput": "IPC%20302+benchid:s-s-saron"
+                },
+                {
+                    "value": "Kaushal Thaker",
+                    "formInput": "IPC%20302+benchid:k-thaker"
+                },
+                {
+                    "value": "Kempaiah Somashekar",
+                    "formInput": "IPC%20302+benchid:k-somashekar"
+                },
+                {
+                    "value": "Aditya Kumar Trivedi",
+                    "formInput": "IPC%20302+benchid:a-k-trivedi"
+                },
+                {
+                    "value": "Vivek Singh Thakur",
+                    "formInput": "IPC%20302+benchid:v-s-thakur"
+                }
+            ]
+        ],
+        [
+            "Years",
+            [
+                {
+                    "value": "2022",
+                    "formInput": "IPC%20302+year:2022"
+                },
+                {
+                    "value": "2024",
+                    "formInput": "IPC%20302+year:2024"
+                },
+                {
+                    "value": "2021",
+                    "formInput": "IPC%20302+year:2021"
+                },
+                {
+                    "value": "2017",
+                    "formInput": "IPC%20302+year:2017"
+                },
+                {
+                    "value": "2018",
+                    "formInput": "IPC%20302+year:2018"
+                },
+                {
+                    "value": "2023",
+                    "formInput": "IPC%20302+year:2023"
+                },
+                {
+                    "value": "2025",
+                    "formInput": "IPC%20302+year:2025"
+                },
+                {
+                    "value": "2019",
+                    "formInput": "IPC%20302+year:2019"
+                },
+                {
+                    "value": "2016",
+                    "formInput": "IPC%20302+year:2016"
+                },
+                {
+                    "value": "2020",
+                    "formInput": "IPC%20302+year:2020"
+                }
+            ]
+        ]
+    ],
+    "docs": [
+        {
+            "tid": 1740937,
+            "catids": [
+                9,
+                53,
+                0,
+                274,
+                2
+            ],
+            "doctype": 1000,
+            "publishdate": "2009-08-25",
+            "authorid": 1920,
+            "bench": [
+                1920,
+                1527
+            ],
+            "title": "Gurmukh Singh vs State Of Haryana on 25 August, 2009",
+            "numcites": 13,
+            "numcitedby": 204,
+            "headline": "whereas the appellant Gurmukh Singh was\n\nconvicted under  section <b>302</b>  of the <b>Indian</b> <b>Penal</b> <b>Code</b> and\n\nsentenced to imprisonment for life and a fine ... meditation, Part 3 of  section 300  of the <b>Indian</b> <b>Penal</b>\n\n<b>Code</b> could not be attracted because it cannot be said that the\n\naccused intended",
+            "docsize": 29274,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "D Bhandari",
+            "authorEncoded": "d-bhandari",
+            "citation": "2009 AIR SCW 6710"
+        },
+        {
+            "tid": 1099363,
+            "catids": [
+                19,
+                9,
+                21,
+                88
+            ],
+            "doctype": 1000,
+            "publishdate": "1989-04-13",
+            "authorid": 2106,
+            "bench": [
+                2106
+            ],
+            "title": "Allauddin Mian & Ors. Sharif Mian & Anr vs State Of Bihar on 13 April, 1989",
+            "numcites": 29,
+            "numcitedby": 217,
+            "headline": "death sentence\ncases indicates obligation to explain choice of sentence.\n     <b>Indian</b> <b>Penal</b> <b>Code</b> , 1860:  Sections 34 ,  141 ,  149- -Unlawful\nassembly--Fastening   of  vicarious  responsibility ... both of them for the commission of\t the\noffence punishable under  section <b>302</b> , I.P.C. Accused Nos.  3\nand  4 were convicted under  sections",
+            "docsize": 63373,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "A M Ahmadi",
+            "authorEncoded": "a-m-ahmadi",
+            "citation": "1989 AIR 1456"
+        },
+        {
+            "tid": 1919674,
+            "catids": [
+                54,
+                9,
+                64,
+                18,
+                52
+            ],
+            "doctype": 1000,
+            "publishdate": "2001-01-24",
+            "authorid": 2204,
+            "bench": [
+                2204
+            ],
+            "title": "Shamnsaheb M.Multtani vs State Of Karnataka on 24 January, 2001",
+            "numcites": 15,
+            "numcitedby": 218,
+            "headline": "304B of the <b>Indian</b>  <b>penal</b>\n<b>Code</b>  and awarded the maximum sentence of life\timprisonment\nprescribed  thereunder\ton  him besides\t  Section  498A \t<b>IPC</b>.\nHowever ... Cr.P.C.   for  the\t two offences are  of  distinct\t and\ndifferent  categories.\t While the basic constituent  of  an\noffence\t under  Section <b>302</b>  <b>IPC</b>",
+            "docsize": 29925,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "K T Thomas",
+            "authorEncoded": "k-t-thomas",
+            "citation": "AIR 2001 SUPREME COURT 921"
+        },
+        {
+            "tid": 388259,
+            "catids": [
+                9,
+                247,
+                0,
+                4,
+                133
+            ],
+            "doctype": 1000,
+            "publishdate": "1979-05-04",
+            "authorid": 2149,
+            "bench": [
+                2149,
+                2159,
+                2161
+            ],
+            "title": "Dalbir Singh & Ors vs State Of Punjab on 4 May, 1979",
+            "numcites": 10,
+            "numcitedby": 170,
+            "headline": "<b>Indian</b> <b>Penal</b>  <b>Code</b>  (45  of 1860),\t S.  <b>302</b> \t &amp;   Criminal\nProcedure <b>Code</b> \t1973 (2\t of 1974),   S. 354(3) -Imposition  of\ndeath penalty-Court  enjoined ... <b>Indian</b> <b>Penal</b>\n<b>Code</b>  read  with  s. 354(3)  of the <b>Code</b> of Criminal Procedure.\n[1075E-F]\n1064\n     12.  S. <b>302</b>  of the ",
+            "docsize": 61889,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "V R Iyer",
+            "authorEncoded": "v-r-iyer",
+            "citation": "1979 AIR 1384"
+        },
+        {
+            "tid": 1309719,
+            "catids": [
+                9,
+                4,
+                0,
+                38,
+                44
+            ],
+            "doctype": 1000,
+            "publishdate": "1979-02-09",
+            "authorid": 2149,
+            "bench": [
+                2149,
+                2159,
+                2161
+            ],
+            "title": "Rajendra Prasad Etc. Etc vs State Of Uttar Pradesh on 9 February, 1979",
+            "numcites": 47,
+            "numcitedby": 162,
+            "headline": "Constitution, on a question of\nsentence, to  restructure  s. <b>302</b>  of the <b>Indian</b> <b>Penal</b>   <b>Code</b>,\n1860 or  s. 354 , sub-s. (3) of the  <b>Code</b> ... nought the sentence of death provided for by  s. <b>302</b> \nof the\t<b>Indian</b> <b>Penal</b>  <b>Code</b>, 1860. To allow the appellants to\nescape with  the lesser",
+            "docsize": 282234,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "V R Iyer",
+            "authorEncoded": "v-r-iyer",
+            "citation": "1979 AIR 916"
+        },
+        {
+            "tid": 1402611,
+            "catids": [
+                9,
+                2,
+                34,
+                2023,
+                52
+            ],
+            "doctype": 1000,
+            "publishdate": "1974-01-09",
+            "authorid": 2097,
+            "bench": [
+                2097,
+                1757
+            ],
+            "title": "Sawal Das vs State Of Bihar on 9 January, 1974",
+            "numcites": 17,
+            "numcitedby": 129,
+            "headline": "Sections  <b>302</b> / 34 \n<b>Indian</b>\t<b>Penal</b> <b>Code</b> and convicted each of them with  the\t aid\nof&#x27;   Section 34  <b>Indian</b> <b>Penal</b> <b>Code</b> for the offence ... <b>Indian</b> <b>Penal</b> <b>Code</b>\t simpliciter\nand  sentenced him to life imprisonment.  It had also  found\nthe appellant and his father guilty under  Section 201  <b>Indian</b>\n<b>Penal</b>",
+            "docsize": 37495,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "M H Beg",
+            "authorEncoded": "m-h-beg",
+            "citation": "1974 AIR 778"
+        },
+        {
+            "tid": 185928164,
+            "catids": [
+                19,
+                9,
+                5,
+                0,
+                26
+            ],
+            "doctype": 1021,
+            "publishdate": "2016-11-25",
+            "authorid": 1238,
+            "bench": [
+                1238,
+                1218
+            ],
+            "title": "Chandu @ Chandra Bhan vs State Of M.P. on 25 November, 2016",
+            "numcites": 30,
+            "numcitedby": 164,
+            "headline": "appellant Hukum Singh\n      has been convicted of\n      main    offence     under\n       Section <b>302</b>  of <b>IPC</b>.)\n                               3                 Criminal Appeal No.172/2007\n                                                 Criminal Appeal ... accused cannot be convicted for the main offence\nunder  Section <b>302</b>  of <b>IPC</b>. He has relied upon the\njudgments passed",
+            "docsize": 101969,
+            "fragment": true,
+            "docsource": "Madhya Pradesh High Court",
+            "author": "N K Gupta",
+            "authorEncoded": "n-k-gupta"
+        },
+        {
+            "tid": 105261366,
+            "catids": [
+                9,
+                406,
+                54,
+                64
+            ],
+            "doctype": 1000,
+            "publishdate": "2011-08-04",
+            "authorid": 720,
+            "bench": [
+                720,
+                1423
+            ],
+            "title": "Rafiq Ahmed @ Rafi vs State Of U.P on 4 August, 2011",
+            "numcites": 61,
+            "numcitedby": 121,
+            "headline": "Court   awarded   rigorous   imprisonment   for   life   to   Rafiq \n\n\n\nAhmad   under    Section   <b>302</b>    <b>IPC</b>   and   seven   years   rigorous \n\n\n\nimprisonment   under    Section   201    <b>IPC</b> ... charge,   the   appellant   has   been   convicted   for   an   offence \n\n\n\nunder  Section <b>302</b>  <b>IPC</b>.  This according to the learned counsel, \n\n\n\nhas deprived the appellant",
+            "docsize": 125362,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "S Kumar",
+            "authorEncoded": "swatanter-kumar",
+            "citation": "AIR 2011 SUPREME COURT 3114"
+        },
+        {
+            "tid": 199442048,
+            "catids": [
+                9,
+                22,
+                54
+            ],
+            "doctype": 1000,
+            "publishdate": "2016-03-04",
+            "authorid": 1509,
+            "bench": [
+                1748,
+                1509
+            ],
+            "title": "Anant Prakash Sinha @ Anant Sinha vs State Of Haryana And Anr on 4 March, 2016",
+            "numcites": 46,
+            "numcitedby": 77,
+            "headline": "offences punishable under   Section  498A / 323 / 34 \nof the <b>Indian</b> <b>Penal</b> <b>Code</b> ( <b>IPC</b> ) against the  husband  and  the  mother-in-law\nalleging that ... under  Section 216   <b>CrPC</b> for addition of  the\ncharges punishable under Section <b>302</b> and other charges  under  the  <b>IPC</b>  and\nthe Explosives",
+            "docsize": 45752,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "D Misra",
+            "authorEncoded": "d-misra",
+            "citation": "AIR 2016 SUPREME COURT 1197"
+        },
+        {
+            "tid": 573333,
+            "catids": [
+                64,
+                9,
+                18,
+                31,
+                54
+            ],
+            "doctype": 1000,
+            "publishdate": "2004-04-08",
+            "authorid": 2227,
+            "bench": [
+                2114,
+                2226,
+                2227
+            ],
+            "title": "Dalbir Singh vs State Of U.P on 8 April, 2004",
+            "numcites": 18,
+            "numcitedby": 98,
+            "headline": "since the charge \nwas for the offence punishable under  Section <b>302</b>  <b>Indian</b> <b>Penal</b> \n<b>Code</b>, the accused were not put to notice to meet a charge ... framing a charge under  Section 306  \n<b>Indian</b> <b>Penal</b> <b>Code</b> and; therefore, presumption under  Section \n113-A  of <b>Indian</b> Evidence Act cannot be drawn and \nconsequently",
+            "docsize": 39195,
+            "fragment": true,
+            "docsource": "Supreme Court of India",
+            "author": "G P Mathur",
+            "authorEncoded": "g-p-mathur",
+            "citation": "AIR 2004 SUPREME COURT 1990"
+        }
+    ],
+    "found": "11 - 20 of 61122",
+    "encodedformInput": "IPC%20302"
+}

@@ -11,27 +11,31 @@ from src.rag.vectorstore import initialize_vectorstore
 from pathlib import Path
 from urllib.parse import urljoin
 from playwright.sync_api import sync_playwright, TimeoutError
+from bs4 import BeautifulSoup
 
-def scrape_supreme_court(max_cases=50):
+def scrape_supreme_court(max_cases=20):
     """Scrape Supreme Court judgments and index in ChromaDB."""
+    cases = []
+    case_count = 0
+    url = "https://main.sci.gov.in/judgments"
+
+    # Try Playwright first
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context(ignore_https_errors=True)  # Bypass SSL errors
+        context = browser.new_context(ignore_https_errors=True)
         page = context.new_page()
-        cases = []
-        case_count = 0
+        logger.info(f"Scraping Supreme Court judgments with Playwright: {url}")
 
-        url = "https://main.sci.gov.in/judgments"
-        logger.info(f"Scraping Supreme Court judgments: {url}")
-        
         for attempt in range(3):
             try:
-                page.goto(url, wait_until="networkidle", timeout=60000)
-                page.wait_for_selector("a[href*='.pdf']", timeout=30000)
+                page.goto(url, wait_until="networkidle", timeout=120000)  # Increased timeout
+                page.wait_for_selector("a[href*='.pdf']", timeout=60000)
                 pdf_links = page.evaluate('''() => {
-                    return Array.from(document.querySelectorAll("a[href*='.pdf']")).map(el => el.href);
+                    return Array.from(document.querySelectorAll("a[href*='.pdf']"))
+                        .map(el => el.href)
+                        .filter(href => href.includes("judgment"));
                 }''')[:max_cases]
-                logger.info(f"Extracted {len(pdf_links)} PDF links")
+                logger.info(f"Extracted {len(pdf_links)} PDF links with Playwright")
                 
                 for pdf_url in pdf_links:
                     if case_count >= max_cases:
@@ -42,7 +46,7 @@ def scrape_supreme_court(max_cases=50):
                         save_case(case_data)
                         case_count += 1
                         logger.info(f"Scraped case {case_count}/{max_cases}: {case_data['title']}")
-                    time.sleep(1)  # Rate limit
+                    time.sleep(1)
                 break
             except TimeoutError:
                 logger.error(f"Attempt {attempt+1} timed out for {url}")
@@ -53,15 +57,40 @@ def scrape_supreme_court(max_cases=50):
         
         context.close()
         browser.close()
-        if cases:
-            index_cases(cases)
-        logger.info(f"Total cases scraped: {len(cases)}")
-        return cases
+
+    # Fallback to requests + BeautifulSoup if Playwright fails
+    if not cases:
+        logger.info(f"Falling back to requests for {url}")
+        try:
+            response = requests.get(url, timeout=30, verify=False)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, 'html.parser')
+            pdf_links = [urljoin(url, a['href']) for a in soup.find_all('a', href=True) 
+                        if a['href'].endswith('.pdf') and 'judgment' in a['href'].lower()][:max_cases]
+            logger.info(f"Extracted {len(pdf_links)} PDF links with requests")
+            
+            for pdf_url in pdf_links:
+                if case_count >= max_cases:
+                    break
+                case_data = scrape_pdf(pdf_url)
+                if case_data:
+                    cases.append(case_data)
+                    save_case(case_data)
+                    case_count += 1
+                    logger.info(f"Scraped case {case_count}/{max_cases}: {case_data['title']}")
+                time.sleep(1)
+        except Exception as e:
+            logger.error(f"Requests fallback failed for {url}: {str(e)}")
+
+    if cases:
+        index_cases(cases)
+    logger.info(f"Total cases scraped: {len(cases)}")
+    return cases
 
 def scrape_pdf(pdf_url):
     """Download and extract text from PDF."""
     try:
-        response = requests.get(pdf_url, timeout=30, verify=False)  # Bypass SSL verification
+        response = requests.get(pdf_url, timeout=30, verify=False)
         response.raise_for_status()
         pdf_path = f"debug_pdf_{pdf_url.split('/')[-1]}"
         with open(pdf_path, "wb") as f:
@@ -88,7 +117,7 @@ def scrape_pdf(pdf_url):
                 "url": pdf_url,
                 "case_id": case_id,
                 "court": "Supreme Court of India",
-                "date": "Unknown"  # Extract from PDF if possible
+                "date": "Unknown"
             }
         }
     except Exception as e:
@@ -117,4 +146,4 @@ def index_cases(cases):
         logger.error(f"Failed to index cases: {str(e)}")
 
 if __name__ == "__main__":
-    scrape_supreme_court(max_cases=50)
+    scrape_supreme_court(max_cases=20)
