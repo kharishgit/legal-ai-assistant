@@ -150,7 +150,7 @@ def initialize_rag_chain():
 
         # Define prompt template
         prompt = PromptTemplate.from_template(
-            """You are a legal expert on Indian law. Using the provided case context, answer the question accurately and concisely, focusing on the relevant legal section or case details. Avoid repeating case text verbatim and remove any formatting artifacts (e.g., 'b302b'). If the question is about a specific section (e.g., IPC 302), prioritize statutory definitions or direct case references. If no relevant information is found, say so.
+            """You are an expert on Indian law. Using the provided case context, answer the question accurately and concisely. For statutory questions (e.g., IPC 302), quote the exact definition if available. For case summaries, highlight key facts, court, and outcome. Remove formatting artifacts (e.g., 'b302b') and avoid citations unless relevant. If no relevant information is found, say 'Insufficient information in the provided context.'
 
 Context:
 {context}
@@ -162,11 +162,11 @@ Answer:"""
 
         # Initialize LLM
         llm = HuggingFacePipeline.from_model_id(
-            model_id="google/flan-t5-base",
+            model_id="google/flan-t5-large",
             task="text2text-generation",
             pipeline_kwargs={"max_length": 512, "truncation": True}
         )
-        logger.info("Initialized LLM: google/flan-t5-base")
+        logger.info("Initialized LLM: google/flan-t5-large")
 
         # Create RAG chain
         chain = (
@@ -190,7 +190,8 @@ def test_rag():
         "What are the key elements of IPC 302?",
         "Explain Section 138 NI Act",
         "Key CrPC 482 judgments",
-        "Describe IPC 498A cases"
+        "Describe IPC 498A cases",
+        "Explain Article 21 of the Indian Constitution"
     ]
     for query in queries:
         try:
