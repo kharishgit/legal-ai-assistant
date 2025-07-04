@@ -148,9 +148,9 @@ def initialize_rag_chain():
             search_kwargs={"k": 10, "fetch_k": 20}
         )
 
-        # Define prompt template
+        # Enhanced prompt template
         prompt = PromptTemplate.from_template(
-            """You are an expert on Indian law. Using the provided case context, answer the question accurately and concisely. For statutory questions (e.g., IPC 302), quote the exact definition if available. For case summaries, highlight key facts, court, and outcome. Remove formatting artifacts (e.g., 'b302b') and avoid citations unless relevant. If no relevant information is found, say 'Insufficient information in the provided context.'
+            """You are an expert on Indian law assisting lawyers and laymen. Using the provided context, answer the question accurately. For statutory questions (e.g., IPC 302), quote the exact definition and explain in simple terms. For case summaries, provide 3-5 bullet points (key facts, court, outcome). For court notices, analyze the legal implications, suggest next steps, and anticipate opponent arguments with counterpoints. If insufficient information, state 'Limited information available' and provide general legal principles.
 
 Context:
 {context}
@@ -181,7 +181,12 @@ Answer:"""
         logger.error(f"Failed to initialize RAG chain: {str(e)}")
         raise
 
-def test_rag():
+def process_notice(text, metadata):
+    query = f"Analyze the court notice: {text}\nMetadata: {metadata}\nExplain the legal implications, suggest next steps, and anticipate opponent arguments."
+    chain, _ = initialize_rag_chain()
+    return chain.invoke(query)
+
+if __name__ == "__main__":
     chain, vectorstore = initialize_rag_chain()
     queries = [
         "What is the punishment for murder under IPC 302?",
@@ -191,7 +196,8 @@ def test_rag():
         "Explain Section 138 NI Act",
         "Key CrPC 482 judgments",
         "Describe IPC 498A cases",
-        "Explain Article 21 of the Indian Constitution"
+        "Explain Article 21 of the Indian Constitution",
+        "Analyze the court notice: IN THE HIGH COURT OF DELHI\nCase No: CRL/1234/2024\nNotice under Section 302 IPC\nIssued on: 01-07-2025\nMetadata: {'sections': ['302'], 'case_number': 'CRL/1234', 'court': 'DELHI'}"
     ]
     for query in queries:
         try:
@@ -201,6 +207,3 @@ def test_rag():
             print(f"Query: {query}\nAnswer: {result}\n")
         except Exception as e:
             logger.error(f"Query failed: {query}, Error: {str(e)}")
-
-if __name__ == "__main__":
-    test_rag()
