@@ -2,18 +2,53 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from langchain.vectorstores import Chroma
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.prompts import PromptTemplate
+import os
+import time
+from dotenv import load_dotenv
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
+from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
-import logging
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from src.ocr.ocr_processor import process_notice
+from src.utils.logger import logger
+import pickle
+import hashlib
+import sys
+import json
 
-logger = logging.getLogger(__name__)
+# Add parent directory to sys.path for module imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-OPENAI_API_KEY = "your-openai-api-key-here"  # Replace with your actual key
+# Disable HuggingFace tokenizer parallelism
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
+# Load environment variables
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY not found in .env file")
+
+# Simple caching mechanism
+CACHE_DIR = "data/cache"
+os.makedirs(CACHE_DIR, exist_ok=True)
+
+def get_cache_key(query):
+    return hashlib.md5(query.encode()).hexdigest()
+
+def load_from_cache(query):
+    cache_file = os.path.join(CACHE_DIR, f"{get_cache_key(query)}.pkl")
+    if os.path.exists(cache_file):
+        with open(cache_file, "rb") as f:
+            return pickle.load(f)
+    return None
+
+def save_to_cache(query, result):
+    cache_file = os.path.join(CACHE_DIR, f"{get_cache_key(query)}.pkl")
+    with open(cache_file, "wb") as f:
+        pickle.dump(result, f)
 
 def initialize_rag_chain():
     try:
@@ -45,23 +80,29 @@ def initialize_rag_chain():
                 search_type="mmr",
                 search_kwargs=search_kwargs
             )
-            # Use invoke for modern LangChain compatibility, fallback to get_relevant_documents
+            logger.info(f"Retrieving documents for query: {question[:50]}...")
             try:
                 docs = retriever.invoke(question)
             except AttributeError:
                 docs = retriever.get_relevant_documents(question)
+            logger.info(f"Retrieved {len(docs)} documents")
             return docs
 
         # Function to process and chunk documents
         def process_and_chunk(docs):
+            logger.info(f"Processing {len(docs)} documents")
             if not docs:
+                logger.warning("No relevant documents found")
                 return "No relevant documents found."
             valid_texts = []
             for doc in docs:
                 if hasattr(doc, 'page_content') and isinstance(doc.page_content, str) and doc.page_content.strip():
                     valid_texts.append(doc.page_content)
+                else:
+                    logger.warning(f"Invalid document: {str(doc)}")
             context = " ".join(valid_texts) if valid_texts else "Limited information available."
             chunks = text_splitter.split_text(context) if context else [context]
+            logger.info(f"Generated {len(chunks)} chunks")
             return "\n".join(chunks[:3])
 
         # Define prompt
@@ -95,7 +136,63 @@ Answer:"""
         )
         logger.info("RAG chain initialized")
         return chain, vectorstore
-
     except Exception as e:
         logger.error(f"Failed to initialize RAG chain: {str(e)}")
         raise
+
+def process_notice_query(file_path):
+    """Process notice file and integrate with RAG."""
+    try:
+        notice_data = process_notice(file_path)
+        text = notice_data["text"]
+        metadata = notice_data["metadata"]
+        query = f"Analyze the court notice: {text}\nMetadata: {str(metadata)}\nExplain legal implications, suggest next steps, anticipate opponent arguments."
+        
+        cached_result = load_from_cache(query)
+        if cached_result:
+            logger.info(f"Retrieved cached result for notice: {query[:50]}...")
+            return cached_result
+
+        chain, _ = initialize_rag_chain()
+        logger.info(f"Invoking chain with input: {{'question': {query}, 'metadata': {metadata}}}")
+        result = chain.invoke({"question": query, "metadata": metadata})
+        save_to_cache(query, result)
+        logger.info(f"Processed notice query for {file_path}: {result}")
+        return result
+    except Exception as e:
+        logger.error(f"Notice query failed for {file_path}: {str(e)}")
+        raise
+
+if __name__ == "__main__":
+    chain, vectorstore = initialize_rag_chain()
+    queries = [
+        "What is the punishment for murder under IPC 302?",
+        "Summarize a case related to IPC 302",
+        "Explain Section 302 IPC in simple terms",
+        "What are the key elements of IPC 302?",
+        "Explain Section 138 NI Act",
+        "Key CrPC 482 judgments",
+        "Describe IPC 498A cases",
+        "Explain Article 21 of the Indian Constitution",
+        {"question": "Analyze the court notice", "file_path": "data/sample_notice.png"}
+    ]
+    for query in queries:
+        try:
+            if isinstance(query, dict) and "file_path" in query:
+                result = process_notice_query(query["file_path"])
+                logger.info(f"Query: Analyze notice {query['file_path']}, Answer: {result}")
+                print(f"Query: Analyze notice {query['file_path']}\nAnswer: {result}\n")
+            else:
+                cached_result = load_from_cache(query)
+                if cached_result:
+                    logger.info(f"Query: {query}, Answer: {cached_result}")
+                    print(f"Query: {query}\nAnswer: {cached_result}\n")
+                    continue
+                logger.info(f"Processing query: {query}")
+                result = chain.invoke({"question": query, "metadata": None})
+                save_to_cache(query, result)
+                logger.info(f"Query: {query}, Answer: {result}")
+                print(f"Query: {query}\nAnswer: {result}\n")
+            time.sleep(10)
+        except Exception as e:
+            logger.error(f"Query failed: {query}, Error: {str(e)}")
