@@ -5,8 +5,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 import os
 import time
 from dotenv import load_dotenv
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
@@ -74,7 +74,7 @@ def initialize_rag_chain():
             question = input_data["question"]
             metadata = input_data.get("metadata", {})
             search_kwargs = {"k": 3, "fetch_k": 10}
-            if "sections" in metadata:
+            if metadata and "sections" in metadata:
                 search_kwargs["filter"] = {"sections": {"$in": metadata["sections"]}}
             retriever = vectorstore.as_retriever(
                 search_type="mmr",
@@ -83,8 +83,14 @@ def initialize_rag_chain():
             logger.info(f"Retrieving documents for query: {question[:50]}...")
             try:
                 docs = retriever.invoke(question)
+                if docs is None:
+                    logger.warning("Retriever returned None, defaulting to empty list")
+                    docs = []
             except AttributeError:
                 docs = retriever.get_relevant_documents(question)
+                if docs is None:
+                    logger.warning("Retriever returned None, defaulting to empty list")
+                    docs = []
             logger.info(f"Retrieved {len(docs)} documents")
             return docs
 
@@ -93,7 +99,7 @@ def initialize_rag_chain():
             logger.info(f"Processing {len(docs)} documents")
             if not docs:
                 logger.warning("No relevant documents found")
-                return "No relevant documents found."
+                return "No relevant documents found. Please provide more specific details or check the vectorstore."
             valid_texts = []
             for doc in docs:
                 if hasattr(doc, 'page_content') and isinstance(doc.page_content, str) and doc.page_content.strip():
