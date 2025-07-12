@@ -70,17 +70,41 @@ def initialize_rag_chain():
         logger.info("Initialized ChromaDB for RAG")
 
         # Function to configure retriever and fetch documents
+        # def get_relevant_documents(input_data):
+        #     question = input_data["question"]
+        #     metadata = input_data.get("metadata", {})
+        #     search_kwargs = {"k": 3, "fetch_k": 10}
+        #     if metadata and "sections" in metadata:
+        #         search_kwargs["filter"] = {"sections": {"$in": metadata["sections"]}}
+        #     retriever = vectorstore.as_retriever(
+        #         search_type="mmr",
+        #         search_kwargs=search_kwargs
+        #     )
+        #     logger.info(f"Retrieving documents for query: {question[:50]}...")
+        #     try:
+        #         docs = retriever.invoke(question)
+        #         if docs is None:
+        #             logger.warning("Retriever returned None, defaulting to empty list")
+        #             docs = []
+        #     except AttributeError:
+        #         docs = retriever.get_relevant_documents(question)
+        #         if docs is None:
+        #             logger.warning("Retriever returned None, defaulting to empty list")
+        #             docs = []
+        #     logger.info(f"Retrieved {len(docs)} documents")
+        #     return docs
+        # In get_relevant_documents
         def get_relevant_documents(input_data):
             question = input_data["question"]
             metadata = input_data.get("metadata", {})
-            search_kwargs = {"k": 3, "fetch_k": 10}
+            search_kwargs = {"k": 5, "fetch_k": 20}  # Increase for better recall
             if metadata and "sections" in metadata:
-                search_kwargs["filter"] = {"sections": {"$in": metadata["sections"]}}
+                search_kwargs["filter"] = {"sections": {"$contains": metadata["sections"][0]}}  # Use $contains for partial matches
             retriever = vectorstore.as_retriever(
-                search_type="mmr",
+                search_type="similarity",  # Switch to similarity for broader results
                 search_kwargs=search_kwargs
             )
-            logger.info(f"Retrieving documents for query: {question[:50]}...")
+            logger.info(f"Retrieving documents for query: {question[:50]}... Filter: {search_kwargs.get('filter', 'none')}")
             try:
                 docs = retriever.invoke(question)
                 if docs is None:
@@ -93,7 +117,6 @@ def initialize_rag_chain():
                     docs = []
             logger.info(f"Retrieved {len(docs)} documents")
             return docs
-
         # Function to process and chunk documents
         def process_and_chunk(docs):
             logger.info(f"Processing {len(docs)} documents")
@@ -172,15 +195,17 @@ def process_notice_query(file_path):
 if __name__ == "__main__":
     chain, vectorstore = initialize_rag_chain()
     queries = [
-        "What is the punishment for murder under IPC 302?",
-        "Summarize a case related to IPC 302",
-        "Explain Section 302 IPC in simple terms",
-        "What are the key elements of IPC 302?",
-        "Explain Section 138 NI Act",
-        "Key CrPC 482 judgments",
-        "Describe IPC 498A cases",
-        "Explain Article 21 of the Indian Constitution",
-        {"question": "Analyze the court notice", "file_path": "data/sample_notice.png"}
+        "Explain IPC 420",
+        "Summarize a CrPC 482 case",
+        # "What is the punishment for murder under IPC 302?",
+        # "Summarize a case related to IPC 302",
+        # "Explain Section 302 IPC in simple terms",
+        # "What are the key elements of IPC 302?",
+        # "Explain Section 138 NI Act",
+        # "Key CrPC 482 judgments",
+        # "Describe IPC 498A cases",
+        # "Explain Article 21 of the Indian Constitution",
+        # {"question": "Analyze the court notice", "file_path": "data/sample_notice.png"}
     ]
     for query in queries:
         try:
