@@ -137,13 +137,14 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 #         print("No cases scraped. Check app.log and debug_api_response_*.json for details.")
 
 
+
 import requests
 import os
+import re
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from src.utils.logger import logger
-import re
 
 load_dotenv()
 IK_API_TOKEN = os.getenv("IK_API_TOKEN")
@@ -151,16 +152,25 @@ PERSIST_DIRECTORY = "data/vector_db"
 
 def extract_sections(text):
     """Extract IPC/CrPC/NI Act sections from text."""
-    sections = []
-    # Simple regex for IPC, CrPC, NI Act sections
-    patterns = [r"Section (\d+[A-Z]?) of the IPC", r"Section (\d+[A-Z]?) of the CrPC", r"Section (\d+[A-Z]?) of the NI Act"]
-    for pattern in patterns:
-        matches = re.findall(pattern, text)
-        sections.extend([f"{match} {pattern.split()[-1]}" for match in matches])
-    return sections
+    try:
+        sections = []
+        patterns = [
+            r"Section\s+(\d+[A-Z]?)[\s]*(?:of the)?\s*(IPC|CrPC|NI Act)",
+            r"\b(\d+[A-Z]?)\s*(IPC|CrPC|NI Act)\b"
+        ]
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            sections.extend([f"{match[0]} {match[1]}" for match in matches])
+        return list(set(sections)) or ["unknown"]
+    except Exception as e:
+        logger.error(f"Failed to extract sections: {str(e)}")
+        return ["unknown"]
 
-def scrape_ik_data(search_query, max_results=10):
+def scrape_ik_data(search_query, max_results=20):
     """Scrape and index case data from Indian Kanoon API."""
+    if not IK_API_TOKEN:
+        logger.error("IK_API_TOKEN not found in .env")
+        return []
     try:
         headers = {"Authorization": f"Token {IK_API_TOKEN}"}
         params = {
@@ -175,16 +185,17 @@ def scrape_ik_data(search_query, max_results=10):
         )
         response.raise_for_status()
         data = response.json()
+        logger.info(f"API response: {len(data.get('docs', []))} documents for query: {search_query}")
         documents = []
         for doc in data.get("docs", []):
-            text = doc.get("text", "")
+            text = doc.get("text", "")[:10000]  # Limit text length
             sections = extract_sections(text)
             metadata = {
-                "case_id": doc.get("id", ""),
-                "court": doc.get("court_name", ""),
-                "date": doc.get("date", ""),
+                "case_id": doc.get("id", f"ik_{hashlib.md5(text.encode()).hexdigest()}"),
+                "court": doc.get("court_name", "unknown"),
+                "date": doc.get("date", "unknown"),
                 "url": doc.get("url", ""),
-                "sections": sections or ["unknown"]
+                "sections": sections
             }
             documents.append({
                 "text": text,
@@ -206,16 +217,19 @@ def index_documents(documents):
                 model_kwargs={"device": "cpu"}
             )
         )
-        texts = [doc["text"] for doc in documents]
-        metadatas = [doc["metadata"] for doc in documents]
-        ids = [doc["metadata"]["case_id"] for doc in documents]
-        vectorstore.add_texts(texts=texts, metadatas=metadatas, ids=ids)
-        logger.info(f"Indexed {len(documents)} documents into ChromaDB")
+        texts = [doc["text"] for doc in documents if doc["text"].strip()]
+        metadatas = [doc["metadata"] for doc in documents if doc["text"].strip()]
+        ids = [doc["metadata"]["case_id"] for doc in documents if doc["text"].strip()]
+        if texts:
+            vectorstore.add_texts(texts=texts, metadatas=metadatas, ids=ids)
+            logger.info(f"Indexed {len(texts)} documents into ChromaDB")
+        else:
+            logger.warning("No valid documents to index")
     except Exception as e:
         logger.error(f"Failed to index documents: {str(e)}")
 
 if __name__ == "__main__":
-    queries = ["IPC 302", "CrPC 482", "IPC 498A", "Section 138 NI Act"]
+    queries = ["IPC 302", "CrPC 482", "IPC 498A", "Section 138 NI Act", "IPC 376", "Article 14"]
     for query in queries:
         docs = scrape_ik_data(query, max_results=20)
         if docs:
