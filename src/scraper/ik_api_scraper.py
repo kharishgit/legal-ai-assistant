@@ -108,7 +108,9 @@ def scrape_ik_api(queries: List[str] = ["IPC 302", "Section 138 NI Act", "CrPC 4
                 }
             }
             
-            json_filename = f"case_{case_count}.json"
+            # Use query-based naming to avoid overwrites
+            safe_query = query.replace(" ", "_").replace("/", "_")
+            json_filename = f"case_{safe_query}_{case_count % max_cases}.json"
             json_path = os.path.join(output_dir, json_filename)
             with open(json_path, "w", encoding="utf-8") as f:
                 json.dump(case_data, f, ensure_ascii=False, indent=4)
