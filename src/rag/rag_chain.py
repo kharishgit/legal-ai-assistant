@@ -1,9 +1,8 @@
 
-
-
 # import sys
 # import os
 # import shutil
+# from PIL import Image, ImageEnhance
 # sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 # import re
@@ -17,7 +16,6 @@
 # from src.rag.vectorstore import initialize_vectorstore
 # from src.data.update_dataset import update_dataset
 # import pytesseract
-# from PIL import Image
 
 # # Configure logging to both console and file
 # logging.basicConfig(
@@ -71,11 +69,13 @@
 #     return [s.strip() for s in sections]
 
 # def process_notice_image(image_path: str) -> Dict:
-#     """Process a scanned notice image to extract text and metadata."""
+#     """Process a scanned notice image to extract text and metadata with preprocessing."""
 #     try:
-#         image = Image.open(image_path)
+#         image = Image.open(image_path).convert('L')  # Convert to grayscale
+#         enhancer = ImageEnhance.Contrast(image)
+#         image = enhancer.enhance(2.0)  # Increase contrast
 #         text = pytesseract.image_to_string(image, lang='eng')
-#         logger.info(f"Extracted text from image: {image_path}")
+#         logger.info(f"Raw OCR text from image {image_path}: {text[:100]}...")  # Log first 100 chars
 #         case_number = re.search(r'(CRL|WP|CA|CIV|MA)/\d+/\d{4}', text, re.IGNORECASE)
 #         sections = extract_legal_sections(text)
 #         metadata = {
@@ -152,7 +152,7 @@
 #         template="""You are a legal assistant for Indian law. Based on the query and context from Indian Kanoon cases, provide a concise response:
 #         - For statutory questions, quote the law and explain in 2-3 simple sentences.
 #         - For case summaries, provide 3 bullet points (key facts, court, outcome).
-#         - For notices, explain legal implications, 2-3 next steps, and 1-2 opponent arguments with counterpoints (e.g., for Section 54, opponent may claim valid sale; counter with contract breach).
+#         - For notices, explain legal implications, 2-3 next steps, and 1-2 opponent arguments with counterpoints (e.g., for Section 54, opponent may claim valid lease; counter with non-payment evidence).
 #         If no Indian precedents, suggest checking US/EU cases. Use simple language.
 
 # Query: {query}
@@ -187,6 +187,7 @@
 #     notice_path = "data/sample_notice.png"
 #     result = run_rag_chain(layman_query, notice_path)
 #     print(f"Layman Query Response: {result['response']}")
+
 
 import sys
 import os
@@ -246,7 +247,7 @@ def extract_legal_sections(text: str) -> List[str]:
     """Extract legal sections (e.g., IPC 420, CrPC 482, Section 54) from query or notice text."""
     patterns = [
         r'IPC\s*\d+[A-Za-z]?',
-        r'Section\s*\d+[A-Za-z]?\s*(?:of\s*(?:Negotiable\s*Instruments\s*Act|NI\s*Act|Transfer\s*of\s*Property\s*Act))?',
+        r'Section\s*\d+[A-Za-z]?\s*(?:of\s*(?:Negotiable\s*Instruments\s*Act|NI\s*Act|Transfer\s*of\s*Property\s*Act))?(?:\s*\n\s*)*',
         r'CrPC\s*\d+[A-Za-z]?',
         r'Article\s*\d+[A-Za-z]?'
     ]
@@ -254,8 +255,9 @@ def extract_legal_sections(text: str) -> List[str]:
     for pattern in patterns:
         matches = re.findall(pattern, text, re.IGNORECASE)
         sections.extend(matches)
+    sections = [re.sub(r'\s*\n\s*', ' ', s).strip() for s in sections]  # Remove line breaks and extra spaces
     logger.info(f"Extracted sections: {sections}")
-    return [s.strip() for s in sections]
+    return [s for s in sections if s]  # Filter out empty strings
 
 def process_notice_image(image_path: str) -> Dict:
     """Process a scanned notice image to extract text and metadata with preprocessing."""
